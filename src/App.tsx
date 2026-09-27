@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProductDetailPage } from './components/ProductDetailPage';
 import { MessageSquare, PhoneCall } from 'lucide-react';
+import { WhatsAppIcon } from './components/WhatsAppIcon';
 import { COMPANY_INFO, PRODUCTS_DATA } from './data/products';
 import { ProductItem } from './types';
 
@@ -102,7 +103,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 text-slate-900 selection:bg-[#FF6B00] selection:text-white">
+    <div className="relative min-h-screen w-full bg-slate-50 text-slate-900 selection:bg-[#FF6B00] selection:text-white overflow-x-hidden">
       {/* Professional Fixed Header */}
       <Header
         activeSection={currentView === 'product-detail' ? 'products' : activeSection}
@@ -195,8 +196,9 @@ export default function App() {
           rel="noreferrer"
           className="p-3.5 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white shadow-lg hover:scale-105 transition-all flex items-center justify-center cursor-pointer group"
           title="Direct WhatsApp Chat with Factory"
+          aria-label="Direct WhatsApp Chat with Factory"
         >
-          <MessageSquare className="w-6 h-6" />
+          <WhatsAppIcon className="w-6 h-6 fill-current shrink-0" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 ease-in-out whitespace-nowrap text-xs font-bold ml-0 group-hover:ml-2">
             WhatsApp Direct
           </span>

@@ -11,10 +11,12 @@ import {
   MessageSquare, 
   ShieldCheck, 
   FileText, 
-  ArrowRight
+  ArrowRight,
+  Download
 } from 'lucide-react';
 import { SurgeShoreLogo } from './SurgeShoreLogo';
 import { COMPANY_INFO } from '../data/products';
+import { downloadCatalogDirectly } from '../utils/catalogPdfData';
 
 interface HeaderProps {
   activeSection: string;
@@ -97,14 +99,14 @@ export const Header: React.FC<HeaderProps> = ({
             : 'bg-white border-b border-slate-200/90'
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20">
+        <div className="max-w-7xl mx-auto flex items-center justify-between min-h-[4.5rem] sm:min-h-[5.5rem] py-1 sm:py-1.5">
           {/* Exact Brand Logo */}
           <button
             onClick={() => handleNavClick('hero')}
-            className="flex items-center gap-2 sm:gap-3 text-left focus:outline-none cursor-pointer group py-1"
+            className="flex items-center gap-2 sm:gap-3 text-left focus:outline-none cursor-pointer group py-0.5"
             title="Surge Shore Powertech LLP"
           >
-            <SurgeShoreLogo variant="full" size="md" theme="light" />
+            <SurgeShoreLogo variant="full" size="lg" theme="light" />
           </button>
 
           {/* Desktop Navigation Links (Aligned to Right Side) */}
@@ -162,7 +164,7 @@ export const Header: React.FC<HeaderProps> = ({
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="lg:hidden bg-white border-b border-slate-200 px-4 sm:px-6 py-5 shadow-2xl overflow-hidden max-h-[80vh] overflow-y-auto"
+            className="lg:hidden w-full bg-white border-b border-slate-200 px-4 sm:px-6 py-5 shadow-2xl overflow-hidden max-h-[80vh] overflow-y-auto"
           >
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => {
@@ -190,6 +192,20 @@ export const Header: React.FC<HeaderProps> = ({
               })}
 
               <div className="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-2.5">
+                {/* Download Product Catalog PDF Option (Direct Original Download) */}
+                <a
+                  href="/downloads/Surge-Shore-Product-Catalog.pdf"
+                  download="Surge-Shore-Product-Catalog.pdf"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    downloadCatalogDirectly();
+                  }}
+                  className="min-h-[44px] w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#FF6B00] to-[#FF851A] hover:from-[#E56000] hover:to-[#FF6B00] text-white text-xs sm:text-sm font-bold text-center flex items-center justify-center gap-2 shadow-md active:scale-98 transition-all cursor-pointer"
+                >
+                  <Download className="w-4 h-4 shrink-0" />
+                  <span>Download Catalog PDF</span>
+                </a>
+
                 <a
                   href={`tel:${COMPANY_INFO.phone.replace(/\s+/g, '')}`}
                   className="min-h-[44px] w-full py-3 px-4 rounded-xl bg-[#0B2559] text-white text-xs sm:text-sm font-bold text-center flex items-center justify-center gap-2 shadow-sm active:scale-98"

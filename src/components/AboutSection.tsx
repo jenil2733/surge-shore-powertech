@@ -137,8 +137,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
   // Key engineering pillars
   const engineeringPillars = [
     { 
-      title: 'Since 2011 Legacy', 
-      desc: 'Over 14+ years of industrial electric motor & automation manufacturing excellence in Rajkot.',
+      title: 'Since 2020 Legacy', 
+      desc: 'Proven industrial electric motor & automation manufacturing excellence in Rajkot.',
       icon: <Clock className="w-5 h-5 text-[#FF6B00]" />
     },
     { 
@@ -194,9 +194,9 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
            ========================================================= */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           <AnimatedCounter
-            target={7}
+            target={6}
             suffix="+"
-            sublabel="SINCE 2011"
+            sublabel="SINCE 2020"
             label="Years of Industry Experience"
             icon={<Clock className="w-5 h-5 text-[#FF6B00]" />}
           />
@@ -244,7 +244,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
               “We believe that Innovation is the driving force behind progress.”
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Pailot & Surge Shore Manufacturing Standard — Delivering precision-engineered 1-Phase & 3-Phase motors built to conquer demanding continuous duty cycles.
+              Surge Shore Manufacturing Standard — Delivering precision-engineered 1-Phase & 3-Phase motors built to conquer demanding continuous duty cycles.
             </p>
           </div>
 
@@ -274,16 +274,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             <div className="space-y-3 sm:space-y-4">
               <div className="inline-flex items-center gap-2 text-xs font-bold font-mono uppercase tracking-wider text-[#FF6B00]">
                 <Clock className="w-4 h-4" />
-                <span>Since 2011 Legacy</span>
+                <span>Since 2020 Legacy</span>
               </div>
               <h3 className="text-xl sm:text-3xl font-black text-[#0B2559] font-display">
                 A Leading Manufacturer of High-Quality Pumps and Motors
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                <strong>Pailot & Surge Shore Powertech LLP</strong> is a premier engineering concern specializing in the design, tooling, and mass fabrication of high-torque, energy-efficient electric induction motors and industrial pumps.
+                <strong>Surge Shore Powertech LLP</strong> is a premier engineering concern specializing in the design, tooling, and mass fabrication of high-torque, energy-efficient electric induction motors and industrial pumps.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                With a legacy of manufacturing excellence spanning over <strong>14 years</strong>, we have established ourselves as a trusted partner in the machinery manufacturing ecosystem. Our commitment to <strong>continuous innovation, precision CNC engineering, and uncompromising customer satisfaction</strong> makes us the preferred OEM vendor for machine builders across Gujarat and all over India.
+                With a legacy of manufacturing excellence since <strong>2020</strong>, we have established ourselves as a trusted partner in the machinery manufacturing ecosystem. Our commitment to <strong>continuous innovation, precision CNC engineering, and uncompromising customer satisfaction</strong> makes us the preferred OEM vendor for machine builders across Gujarat and all over India.
               </p>
             </div>
 

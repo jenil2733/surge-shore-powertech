@@ -1,7 +1,8 @@
 import React from 'react';
 import { SurgeShoreLogo } from './SurgeShoreLogo';
 import { COMPANY_INFO, PRODUCTS_DATA } from '../data/products';
-import { Phone, Mail, MapPin, Clock, ArrowUp, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUp, MessageSquare, Download } from 'lucide-react';
+import { downloadCatalogDirectly } from '../utils/catalogPdfData';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -54,6 +55,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 >
                   Product Catalog & Specs
                 </button>
+              </li>
+              <li>
+                <a
+                  href="/downloads/Surge-Shore-Product-Catalog.pdf"
+                  download="Surge-Shore-Product-Catalog.pdf"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    downloadCatalogDirectly();
+                  }}
+                  className="hover:text-[#FF6B00] transition-colors font-bold text-[#FF6B00] flex items-center gap-1.5 cursor-pointer text-left"
+                >
+                  <Download className="w-3.5 h-3.5 shrink-0" />
+                  <span>Download Catalog (PDF)</span>
+                  <span className="text-[10px] bg-[#FF6B00]/10 px-1.5 py-0.5 rounded border border-[#FF6B00]/30 uppercase font-mono">12P PDF</span>
+                </a>
               </li>
               <li>
                 <button

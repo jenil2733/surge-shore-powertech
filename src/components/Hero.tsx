@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section
       id="hero"
-      className="relative pt-24 sm:pt-36 pb-16 sm:pb-20 px-3 sm:px-8 bg-gradient-to-b from-slate-50 via-white to-slate-50 technical-grid border-b border-slate-200 overflow-hidden"
+      className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 px-3 sm:px-8 bg-gradient-to-b from-slate-50 via-white to-slate-50 technical-grid border-b border-slate-200 overflow-hidden w-full"
     >
       <div className="max-w-7xl mx-auto w-full space-y-8 sm:space-y-10">
         {/* Main Grid: Value Proposition + 3D 360 Motor Studio Model */}
@@ -42,17 +42,17 @@ export const Hero: React.FC<HeroProps> = ({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 space-y-4 sm:space-y-5 text-left relative z-20 pointer-events-auto"
+            className="lg:col-span-5 space-y-4 sm:space-y-5 text-left relative z-20 pointer-events-auto w-full"
           >
             {/* Verification pill */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#00205B]/5 border border-[#00205B]/15 text-[#00205B] text-[11px] sm:text-xs font-bold font-mono uppercase tracking-wider shadow-xs"
+              className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-[#00205B]/5 border border-[#00205B]/15 text-[#00205B] text-[10.5px] sm:text-xs font-bold font-mono uppercase tracking-wider shadow-xs min-w-0"
             >
               <Building2 className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
-              <span className="truncate">Surge Shore Powertech LLP • Rajkot</span>
+              <span className="truncate max-w-[260px] sm:max-w-none">Surge Shore Powertech LLP • Rajkot</span>
             </motion.div>
 
             {/* Main Headline */}

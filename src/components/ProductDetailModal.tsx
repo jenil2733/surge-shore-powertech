@@ -284,10 +284,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
               <div className="lg:col-span-6 space-y-4">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0B2559]/10 text-[#0B2559] text-[11px] font-bold font-mono uppercase tracking-wider mb-2">
-                    <Zap className="w-3 h-3 text-[#FF6B00]" />
-                    <span>{product.phase === 'Both' ? '1-Phase & 3-Phase Available' : product.phase}</span>
-                  </div>
+                  {product.id !== 'electrical-panels' && (
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0B2559]/10 text-[#0B2559] text-[11px] font-bold font-mono uppercase tracking-wider mb-2">
+                      <Zap className="w-3 h-3 text-[#FF6B00]" />
+                      <span>
+                        {product.type === 'stabilizer'
+                          ? (selectedMounting === 'relay-type' ? '1-Phase Only (230V AC)' : '1-Phase & 3-Phase Both Available')
+                          : (product.phase === 'Both' ? '1-Phase & 3-Phase Available' : product.phase)}
+                      </span>
+                    </div>
+                  )}
                   <h3 className="text-xl sm:text-2xl font-black text-[#0B2559] font-display">
                     {product.name}
                   </h3>
@@ -316,13 +322,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                             key={sub.id}
                             type="button"
                             onClick={() => setSelectedMounting(sub.id)}
-                            className={`py-1.5 px-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-left border ${
+                            className={`py-2 px-2.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-left border flex flex-col justify-between ${
                               isSelected
-                                ? 'bg-[#0B2559] text-white border-[#0B2559]'
+                                ? 'bg-[#0B2559] text-white border-[#0B2559] shadow-xs'
                                 : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                             }`}
                           >
-                            {idx + 1}. {sub.name}
+                            <div className="flex items-center justify-between mb-0.5 gap-1">
+                              <span className="truncate">{idx + 1}. {sub.name.split(' (')[0]}</span>
+                            </div>
+                            <span className={`text-[10px] font-semibold ${isSelected ? 'text-amber-300' : 'text-slate-500'}`}>
+                              {sub.phaseLabel || (sub.id === 'relay-type' ? '230V 1-Phase' : '230V & 415V Both')}
+                            </span>
                           </button>
                         );
                       })}
@@ -512,6 +523,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                           <thead className="bg-[#0B2559] text-white uppercase text-[10px] font-mono tracking-wider">
                             <tr>
                               <th className="py-2.5 px-3 font-bold">Rating Capacity</th>
+                              <th className="py-2.5 px-3 font-bold">Operating Phase</th>
                               <th className="py-2.5 px-3 font-bold">Input Range & Output</th>
                               <th className="py-2.5 px-3 font-bold">Enclosure / Mounting</th>
                               <th className="py-2.5 px-3 font-bold">Speed</th>
@@ -528,6 +540,21 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                               >
                                 <td className="py-2.5 px-3 font-bold text-[#0B2559] font-mono">
                                   {dim.frame}
+                                </td>
+                                <td className="py-2.5 px-3">
+                                  {dim.phase === '1-Phase' ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-50 text-amber-900 border border-amber-300 whitespace-nowrap">
+                                      ⚡ 1-Phase (230V)
+                                    </span>
+                                  ) : dim.phase === '3-Phase' ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold bg-blue-50 text-[#0B2559] border border-blue-300 whitespace-nowrap">
+                                      ⚡ 3-Phase (415V)
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-extrabold bg-slate-100 text-slate-700 whitespace-nowrap">
+                                      1-PH & 3-PH
+                                    </span>
+                                  )}
                                 </td>
                                 <td className="py-2.5 px-3 font-mono font-bold text-[#FF6B00]">
                                   {dim.mountingSpec}

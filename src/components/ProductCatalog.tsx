@@ -4,12 +4,14 @@ import {
   Layers, 
   ArrowUpRight,
   MessageSquare,
-  ArrowRight
+  ArrowRight,
+  Download
 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/products';
 import { ProductItem } from '../types';
 import { ProductPhotoview } from './ProductPhotoview';
 import { ProductDetailModal } from './ProductDetailModal';
+import { downloadCatalogDirectly } from '../utils/catalogPdfData';
 
 interface ProductCatalogProps {
   onOpenContact: () => void;
@@ -60,16 +62,28 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             </p>
           </div>
 
-          {/* Quick WhatsApp PDF Catalog Request */}
-          <div className="flex items-center gap-3 shrink-0">
+          {/* Quick PDF Catalog Download & WhatsApp Request (Direct Download) */}
+          <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+            <a
+              href="/downloads/Surge-Shore-Product-Catalog.pdf"
+              download="Surge-Shore-Product-Catalog.pdf"
+              onClick={(e) => {
+                e.preventDefault();
+                downloadCatalogDirectly();
+              }}
+              className="min-h-[44px] w-full sm:w-auto px-5 py-3 rounded-2xl bg-[#FF6B00] hover:bg-[#E56000] text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+            >
+              <Download className="w-4 h-4" />
+              <span>Download Catalog PDF</span>
+            </a>
             <a
               href="https://wa.me/919173959019?text=Hello%20Surge%20Shore%2C%20please%20send%20me%20your%20full%20PDF%20technical%20catalog%20and%20OEM%20price%20sheet."
               target="_blank"
               rel="noreferrer"
-              className="min-h-[44px] w-full sm:w-auto px-5 py-3 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5D] text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2.5 cursor-pointer active:scale-95"
+              className="min-h-[44px] w-full sm:w-auto px-4 py-3 rounded-2xl bg-emerald-50 text-[#25D366] hover:bg-[#25D366] hover:text-white border border-emerald-200 text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Request Full PDF Catalog</span>
+              <span>WhatsApp PDF</span>
             </a>
           </div>
         </motion.div>

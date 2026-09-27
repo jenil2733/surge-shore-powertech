@@ -139,18 +139,26 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               {/* Product Visual Header Badge */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 text-[11px] sm:text-xs font-black bg-[#0B2559] text-white rounded-lg uppercase tracking-wider">
-                    {product.phase === 'Both' ? '1-PH & 3-PH' : product.phase}
-                  </span>
+                  {product.id !== 'electrical-panels' && (
+                    <span className="px-2.5 py-1 text-[11px] sm:text-xs font-black bg-[#0B2559] text-white rounded-lg uppercase tracking-wider">
+                      {product.type === 'stabilizer'
+                        ? (selectedMounting === 'relay-type' ? '1-PH ONLY (230V)' : '1-PH & 3-PH BOTH')
+                        : (product.phase === 'Both' ? '1-PH & 3-PH' : product.phase === '3-Phase' ? '3-PH' : product.phase === '1-Phase' ? '1-PH' : product.phase)}
+                    </span>
+                  )}
                   {product.badge && (
                     <span className="px-2.5 py-1 text-[11px] sm:text-xs font-bold bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/30 rounded-lg">
-                      {product.badge}
+                      {product.type === 'stabilizer'
+                        ? (selectedMounting === 'relay-type' ? '1-Phase Step AVR' : '1-Phase & 3-Phase Servo')
+                        : product.badge}
                     </span>
                   )}
                 </div>
-                <span className="text-[11px] sm:text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
-                  {product.type === 'stabilizer' ? 'IS 8448 / IS 9815' : 'IS 325'}
-                </span>
+                {product.id !== 'electrical-panels' && (
+                  <span className="text-[11px] sm:text-xs font-mono font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                    {product.type === 'stabilizer' ? 'IS 8448 / IS 9815' : 'IS 325'}
+                  </span>
+                )}
               </div>
 
               {/* Photorised Multi-Angle Canvas Gallery */}
@@ -168,26 +176,26 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               <div className="grid grid-cols-3 gap-2 pt-1 text-center">
                 <div className="p-2 sm:p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="text-[9.5px] sm:text-[10px] uppercase font-bold text-slate-400">
-                    {product.type === 'stabilizer' ? 'Winding' : 'Shaft Type'}
+                    {product.type === 'stabilizer' ? 'Winding' : product.type === 'panel' ? 'Design' : 'Shaft Type'}
                   </div>
                   <div className="text-[11px] sm:text-xs font-bold text-[#0B2559] truncate">
-                    {product.type === 'stabilizer' ? '99.9% Cu' : 'EN8E Steel'}
+                    {product.type === 'stabilizer' ? '99.9% Cu' : product.type === 'panel' ? 'Custom Built' : 'EN8E Steel'}
                   </div>
                 </div>
                 <div className="p-2 sm:p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="text-[9.5px] sm:text-[10px] uppercase font-bold text-slate-400">
-                    {product.type === 'stabilizer' ? 'Type' : 'Mounting'}
+                    {product.type === 'stabilizer' ? 'Type' : product.type === 'panel' ? 'Enclosure' : 'Mounting'}
                   </div>
                   <div className="text-[11px] sm:text-xs font-bold text-[#FF6B00] truncate">
-                    {currentSubCategory ? currentSubCategory.code : (product.subCategories ? (selectedMounting === 'flange-mounted' ? 'Flange (B5/B14)' : 'Foot (B3)') : 'Standard')}
+                    {product.type === 'panel' ? 'CRCA / IP54' : currentSubCategory ? currentSubCategory.code : (product.subCategories ? (selectedMounting === 'flange-mounted' ? 'Flange (B5/B14)' : 'Foot (B3)') : 'Standard')}
                   </div>
                 </div>
                 <div className="p-2 sm:p-2.5 bg-slate-50 rounded-xl border border-slate-200">
                   <div className="text-[9.5px] sm:text-[10px] uppercase font-bold text-slate-400">
-                    {product.type === 'stabilizer' ? 'Regulation' : 'Thermal Class'}
+                    {product.type === 'stabilizer' ? 'Regulation' : product.type === 'panel' ? 'Switchgear' : 'Thermal Class'}
                   </div>
                   <div className="text-[11px] sm:text-xs font-bold text-emerald-600 truncate">
-                    {product.type === 'stabilizer' ? (selectedMounting === 'servo-type' ? '±1% Precision' : '±8% Stepped') : 'Class F (155°C)'}
+                    {product.type === 'stabilizer' ? (selectedMounting === 'servo-type' ? '±1% Precision' : '±8% Stepped') : product.type === 'panel' ? 'Schneider / ABB' : 'Class F (155°C)'}
                   </div>
                 </div>
               </div>
@@ -249,19 +257,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                               : 'bg-white text-slate-700 border-slate-200 hover:border-[#0B2559]/40 hover:bg-slate-50'
                           }`}
                         >
-                          <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center justify-between mb-1 gap-1">
                             <span className={`text-[11px] font-mono font-bold ${isSelected ? 'text-[#FF6B00]' : 'text-slate-500'}`}>
-                              {idx + 1}. {sub.name}
-                            </span>
-                            <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono font-black ${
-                              isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                            }`}>
-                              {sub.code || sub.name}
+                              {idx + 1}. {sub.name.split(' (')[0]}
                             </span>
                           </div>
                           <div className="font-extrabold text-xs sm:text-sm">
                             {sub.name}
                           </div>
+                          {sub.phaseLabel && (
+                            <div className={`text-[10px] font-bold mt-1 inline-flex items-center gap-1 ${
+                              isSelected ? 'text-amber-300' : 'text-amber-700'
+                            }`}>
+                              <span>⚡ {sub.phaseLabel}</span>
+                            </div>
+                          )}
                           <div className={`text-[10px] line-clamp-2 mt-1 leading-snug ${
                             isSelected ? 'text-blue-100' : 'text-slate-500'
                           }`}>
@@ -284,20 +294,38 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               {/* Quick Specification Parameters Grid */}
               <div className="grid grid-cols-2 gap-2.5 sm:gap-3 pt-2">
                 <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">Stator Winding</span>
-                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">100% Copper</strong>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">
+                    {product.type === 'panel' ? 'Configuration' : 'Stator Winding'}
+                  </span>
+                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">
+                    {product.type === 'panel' ? 'APFC / MCC / PLC / VFD' : '100% Copper'}
+                  </strong>
                 </div>
                 <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">Rated Voltage</span>
-                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">415V / 230V</strong>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">
+                    {product.type === 'panel' ? 'Input Voltage' : product.type === 'stabilizer' ? 'Operating Phase' : 'Rated Voltage'}
+                  </span>
+                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">
+                    {product.type === 'panel'
+                      ? '415V / Custom Rated'
+                      : product.type === 'stabilizer'
+                      ? (selectedMounting === 'relay-type' ? '1-Phase Only (230V)' : '1-Phase & 3-Phase Both')
+                      : (product.phase === 'Both' ? '415V / 230V' : product.phase === '1-Phase' ? '230V (1-PH)' : '415V (3-PH)')}
+                  </strong>
                 </div>
                 <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
                   <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">Enclosure</span>
-                  <strong className="text-[11px] sm:text-sm text-emerald-600 block truncate">IP55 Standard</strong>
+                  <strong className="text-[11px] sm:text-sm text-emerald-600 block truncate">
+                    {product.type === 'panel' ? 'IP54 / IP55 CRCA' : 'IP55 Standard'}
+                  </strong>
                 </div>
                 <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">Duty Cycle</span>
-                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">Continuous S1</strong>
+                  <span className="text-[10px] sm:text-[11px] text-slate-500 block font-medium">
+                    {product.type === 'panel' ? 'Switchgear' : 'Duty Cycle'}
+                  </span>
+                  <strong className="text-[11px] sm:text-sm text-[#0B2559] block truncate">
+                    {product.type === 'panel' ? 'Schneider / Siemens / ABB' : 'Continuous S1'}
+                  </strong>
                 </div>
               </div>
 
@@ -568,6 +596,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                         <thead className="bg-[#0B2559] text-white uppercase text-[10px] sm:text-xs font-mono tracking-wider">
                           <tr>
                             <th className="py-3.5 px-3 sm:px-4 font-bold">Rating Capacity</th>
+                            <th className="py-3.5 px-3 sm:px-4 font-bold">Operating Phase</th>
                             <th className="py-3.5 px-3 sm:px-4 font-bold">Input Voltage Range & Output</th>
                             <th className="py-3.5 px-3 sm:px-4 font-bold">Enclosure & Mounting</th>
                             <th className="py-3.5 px-3 sm:px-4 font-bold">Correction Speed</th>
@@ -584,6 +613,21 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                             >
                               <td className="py-3 px-3 sm:px-4 font-extrabold text-[#0B2559] font-mono">
                                 {dim.frame}
+                              </td>
+                              <td className="py-3 px-3 sm:px-4">
+                                {dim.phase === '1-Phase' ? (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-extrabold bg-amber-50 text-amber-900 border border-amber-300 whitespace-nowrap">
+                                    ⚡ 1-Phase (230V)
+                                  </span>
+                                ) : dim.phase === '3-Phase' ? (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-extrabold bg-blue-50 text-[#0B2559] border border-blue-300 whitespace-nowrap">
+                                    ⚡ 3-Phase (415V)
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-extrabold bg-slate-100 text-slate-700 whitespace-nowrap">
+                                    1-PH & 3-PH
+                                  </span>
+                                )}
                               </td>
                               <td className="py-3 px-3 sm:px-4 font-mono font-bold text-[#FF6B00]">
                                 {dim.mountingSpec}

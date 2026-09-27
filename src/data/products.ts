@@ -3,9 +3,9 @@ import { ProductItem, IndustryItem } from '../types';
 export const COMPANY_INFO = {
   name: "SURGE SHORE POWERTECH LLP",
   tagline: "Powering Industry, Driving Performance",
-  foundedYear: 2011,
-  yearsOfExperience: "14+",
-  activeYearsCatalog: "07+",
+  foundedYear: 2020,
+  yearsOfExperience: "6+",
+  activeYearsCatalog: "05+",
   employees: "20+",
   clients: "125+",
   phone: "+91 91739 59019",
@@ -107,9 +107,9 @@ export const PRODUCTS_DATA: ProductItem[] = [
         name: "Flange Mounted (B5 / B14)",
         code: "B5 / B14 Flange Mount",
         subtitle: "Direct bolt-on concentric flange coupling for reduction gearboxes, pumps & hydraulic packs",
-        description: "Surge Shore Flange-Mounted (B5 / B14) Cast Iron Motors are designed with a precision-machined round front end-shield flange. This permits direct spigot-piloted coupling to industrial worm, helical, and planetary gearboxes, hydraulic pump bell-housings, and inline blowers without belts or pulleys.",
+        description: "Surge Shore Flange-Mounted (B5 / B14) Cast Iron Motors are designed with a precision-machined round front end-shield flange. This permits direct spigot coupling to industrial worm, helical, and planetary gearboxes, hydraulic pump bell-housings, and inline blowers without belts or pulleys.",
         features: [
-          "Precision concentric spigot piloting eliminates angular misalignment and bearing vibration",
+          "Precision concentric spigot alignment eliminates angular misalignment and bearing vibration",
           "Available in B5 (Large Outer Clearance Flange) and B14 (Compact Face Mounting with tapped holes)",
           "Direct coupling eliminates belt slippage, saves installation footprint, and zero maintenance",
           "High thermal dissipation cast iron end shield with integrated oil seal recess for gearbox wet-ends",
@@ -134,51 +134,39 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+        url: "/surge-shore-foot-mounted-motor.png",
         title: "Cast Iron Foot Mounted (B3) - Studio Shot",
         angleLabel: "Main Angle (B3)",
-        description: "Heavy-duty cast iron body with robust dual integral mounting feet, heavy cooling fins and top terminal box."
+        description: "Surge Shore heavy-duty cast iron body with robust dual integral mounting feet, heavy cooling fins, top terminal box, and factory nameplate."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
-        title: "Foot Base & Shaft Alignment View",
-        angleLabel: "Foot Base & Shaft",
-        description: "Slotted anchor bolt holes (A × B) for precise belt tensioning with EN8E precision machined keyed shaft."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80",
-        title: "Terminal Box & Industrial Casing Close-Up",
-        angleLabel: "Terminal & Casing",
-        description: "Dielectric aluminum terminal box, Class F high purity copper winding with bi-directional aerodynamic fan cowl."
+        url: "/surge-shore-foot-mounted-motor-angle-2.png",
+        title: "Surge Shore Foot Mounted Motor - Factory Nameplate View",
+        angleLabel: "Nameplate & Shaft",
+        description: "Surge Shore Powertech LLP certified metal nameplate, cast base footings, and yellow safety shaft cap."
       }
     ],
     galleryFlange: [
       {
-        url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-        title: "Cast Iron Flange Mounted (B5 / B14) - Face View",
-        angleLabel: "Flange Face (B5/B14)",
-        description: "Machined circular mounting flange with precision concentric spigot pilot for direct coupling to industrial gearboxes."
+        url: "/IMG_5524.PNG",
+        title: "Cast Iron Flange Mounted (B5) - Side Profile",
+        angleLabel: "Flange Profile (B5)",
+        description: "Surge Shore heavy-duty cast iron body with machined circular B5 mounting flange, yellow protective shaft cap, and top terminal box."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        title: "Flange Concentric Pilot & Drive Shaft",
-        angleLabel: "Shaft & Spigot Alignment",
-        description: "Ground EN8E shaft perfectly centered to IS 2223 / IEC pitch circle diameter bolt holes."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&q=80",
-        title: "Direct Flange Coupled Side Profile",
-        angleLabel: "Flange Body Profile",
-        description: "Compact totally enclosed cast iron body with integrated oil-seal recess for direct hydraulic/gearbox installation."
+        url: "/IMG_5525.PNG",
+        title: "Cast Iron Flange Mounted (B5) - Surge Shore Nameplate View",
+        angleLabel: "Nameplate & Flange Face",
+        description: "Surge Shore Powertech LLP certified specification nameplate, precision concentric mounting spigot, and IP55 cast iron enclosure."
       }
     ]
   },
   {
     id: "aluminium-induction-motors",
     name: "INDUCTION MOTOR ( ALUMINIUM BODY)",
-    subtitle: "Lightweight High Thermal-Dissipation Motors (1-Phase & 3-Phase)",
+    subtitle: "Lightweight High Thermal-Dissipation Motors (3-Phase)",
     category: "aluminium-induction-motors",
-    phase: "Both",
+    phase: "3-Phase",
     powerRange: "0.25 HP to 3.0 HP (0.18 kW to 2.2 kW)",
     description: "Designed for weight-sensitive machinery, food processing, portable equipment, and clean industrial environments. Aluminium housing provides superior heat dissipation rate and aesthetic corrosion resistance.",
     type: "motor",
@@ -201,13 +189,6 @@ export const PRODUCTS_DATA: ProductItem[] = [
       { kw: 1.10, hp: 1.50, frame: "90S", rpm: 1410, current: 2.50, torquePercent: 210, startingCurrentPercent: 455, efficiencyPercent: 81.4, powerFactor: 0.81 },
       { kw: 1.50, hp: 2.00, frame: "90L", rpm: 1420, current: 3.20, torquePercent: 215, startingCurrentPercent: 460, efficiencyPercent: 82.8, powerFactor: 0.82 },
       { kw: 2.20, hp: 3.00, frame: "100L", rpm: 1425, current: 4.70, torquePercent: 200, startingCurrentPercent: 490, efficiencyPercent: 84.3, powerFactor: 0.79 },
-    ],
-    specs1Phase: [
-      { kw: 0.18, hp: 0.25, frame: "63", rpm: 1450, current: 2.0, torquePercent: 260, startingCurrentPercent: 460, efficiencyPercent: 62.0, powerFactor: 0.80, runningCapacitor: 15 },
-      { kw: 0.37, hp: 0.50, frame: "71", rpm: 1440, current: 3.4, torquePercent: 270, startingCurrentPercent: 490, efficiencyPercent: 65.0, powerFactor: 0.79, runningCapacitor: 15, startingCapacitor: "80-100" },
-      { kw: 0.75, hp: 1.00, frame: "80", rpm: 1450, current: 6.7, torquePercent: 250, startingCurrentPercent: 475, efficiencyPercent: 72.0, powerFactor: 0.75, runningCapacitor: 15, startingCapacitor: "100-120" },
-      { kw: 1.50, hp: 2.00, frame: "90L", rpm: 1460, current: 9.1, torquePercent: 250, startingCurrentPercent: 500, efficiencyPercent: 78.0, powerFactor: 0.90, runningCapacitor: 30, startingCapacitor: "200-250" },
-      { kw: 2.20, hp: 3.00, frame: "100L", rpm: 1460, current: 12.5, torquePercent: 270, startingCurrentPercent: 540, efficiencyPercent: 80.0, powerFactor: 0.94, runningCapacitor: "30+30", startingCapacitor: "200-250" }
     ],
     applications: [
       "Food Processing & Dairy Machinery",
@@ -276,42 +257,18 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=80",
-        title: "Aluminium Body Foot Mounted (B3) - Studio Shot",
-        angleLabel: "Main Angle (B3)",
-        description: "Extruded lightweight aluminium casing with detachable multi-position foot brackets for compact machine frames."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=80",
-        title: "Thermal Dissipation Extruded Cooling Fins & Foot Base",
-        angleLabel: "Cooling Fins & Base",
-        description: "High thermal conductivity aluminium alloy with rapid heat dissipation and anti-corrosive finish."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80",
-        title: "Top Terminal Box & Drive Bearing Shield",
-        angleLabel: "Terminal & Bearings",
-        description: "IP55 sealed aluminum terminal box with multi-directional conduit entries and whisper-quiet shielded bearings."
+        url: "/surge-shore-aluminium-foot-mounted.png",
+        title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
+        angleLabel: "Main View (B3)",
+        description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."
       }
     ],
     galleryFlange: [
       {
-        url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-        title: "Aluminium Flange Mounted (B5 / B14) - Face View",
-        angleLabel: "Flange Face (B5/B14)",
-        description: "Precision CNC-machined aluminium front flange engineered for direct coupling to NMRV worm gearboxes."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        title: "Machined Spigot Pilot Center & Balanced Shaft",
-        angleLabel: "Spigot Alignment",
-        description: "Zero runout precision concentric spigot with high-tensile EN8E alloy shaft for whisper-quiet direct drives."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&q=80",
-        title: "Compact Lightweight Flange Motor Assembly",
-        angleLabel: "Flange Profile",
-        description: "Ultra-compact profile with 40% weight reduction compared to cast iron for weight-sensitive food and pharma automation."
+        url: "/IMG_5521.PNG",
+        title: "Surge Shore Aluminium Flange Mounted Motor (B5) - Side Profile",
+        angleLabel: "Flange Profile (B5)",
+        description: "Surge Shore high-efficiency aluminium flange mounted motor with precision CNC-machined spigot face, terminal box, cooling ribs, and yellow drive shaft."
       }
     ]
   },
@@ -356,22 +313,22 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryDefault: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-        title: "Industrial Vibrator Motor with Twin Unbalance Covers",
-        angleLabel: "Main Angle",
-        description: "Heavy-duty ductile iron body with sealed end-covers for extreme G-force continuous vibration."
+        url: "/3df1fd38-0c74-49ec-b7d8-3e3cc594ad94.png",
+        title: "Surge Shore Orange Vibrator Motor (Frame 80 | 3500 N Force)",
+        angleLabel: "Orange (3500 N)",
+        description: "Surge Shore Model MES Frame 80 industrial vibrator motor delivering 3500N centrifugal force at 2800 RPM with certified nameplate and heavy-duty 4-bolt cast base."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
-        title: "Adjustable Centrifugal Force Weight Indicator",
-        angleLabel: "Weights & Shaft",
-        description: "Graduated scale for stepless 0-100% vibration amplitude calibration."
+        url: "/876fd32f-ba7f-4e51-ab42-f144e0f32fc5.png",
+        title: "Surge Shore Heavy-Duty Vibrator Motor (Frame 100 | 6000 N Force)",
+        angleLabel: "Heavy-Duty Silver (6000 N)",
+        description: "Surge Shore Model MES Frame 100 high-capacity vibrator motor delivering 6000N centrifugal force at 3000 RPM with OK Tested QA certification."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80",
-        title: "Vibration Absorbing 4-Bolt Cast Base",
-        angleLabel: "Mount Base",
-        description: "Heavy-gauge reinforced ductile base designed for screening plants and compaction tables."
+        url: "/IMG-20260724-WA0002.jpg.jpeg",
+        title: "Surge Shore Industrial Vibrator Motor Color & Frame Range",
+        angleLabel: "Full Range Lineup",
+        description: "Complete lineup of Surge Shore vibrator motors in custom industrial finishes engineered for screening plants, hoppers, compaction tables, and foundries."
       }
     ]
   },
@@ -406,10 +363,13 @@ export const PRODUCTS_DATA: ProductItem[] = [
       {
         id: "relay-type",
         name: "Relay Type Voltage Stabilizer",
-        code: "Relay Type (Step AVR)",
-        subtitle: "Rapid stepped automatic voltage regulator utilizing high-grade electromagnetic relays",
-        description: "Surge Shore Relay-Type Automatic Voltage Stabilizers utilize ultra-fast electronic switching relays coupled to multi-tapped copper autotransformers. Engineered for rapid stepped voltage correction against sudden grid drops and spikes, ideal for commercial appliances, air conditioning, single-phase office equipment, and residential mainlines.",
+        code: "Relay Type",
+        subtitle: "Rapid stepped automatic voltage regulator engineered exclusively for 1-Phase (230V AC) loads",
+        description: "Surge Shore Relay-Type Automatic Voltage Stabilizers are built exclusively for 1-Phase (230V AC) power systems. Utilizing ultra-fast high-amperage electromagnetic relays coupled to multi-tapped electrolytic copper autotransformers, they deliver rapid stepped voltage correction against sudden grid surges, brownouts, and sags. Ideal for residential air conditioning, commercial refrigeration, deep freezers, single-phase office electronics, and pump motors.",
+        phase: "1-Phase",
+        phaseLabel: "1-Phase Only (230V AC)",
         features: [
+          "Exclusively designed for 1-Phase (230V ±10%, 50Hz) single-phase power supply networks",
           "Ultra-fast stepped correction using sealed high-amperage electromagnetic relays (<15ms switching)",
           "Multi-tap primary transformer wound with 99.9% pure electrolytic copper for low heat loss",
           "Solid-state electronic comparator PCB with high-precision voltage sensing circuit",
@@ -418,10 +378,10 @@ export const PRODUCTS_DATA: ProductItem[] = [
           "Dual-mode Digital/Analog voltmeter indicating live input and stabilized output voltage"
         ],
         dimensions: [
-          { frame: "0.5 kVA - 1.0 kVA", hp: "0.5 - 1.0 kVA (1-PH)", mountingSpec: "Input: 130V - 280V | Output: 220V ±8%", shaftDiameter: "Wall / Table Mount", standard: "IS 8448" },
-          { frame: "2.0 kVA - 3.0 kVA", hp: "2.0 - 3.0 kVA (1-PH)", mountingSpec: "Input: 110V - 280V | Output: 220V ±8%", shaftDiameter: "Wall / Floor Mount", standard: "IS 8448" },
-          { frame: "4.0 kVA - 5.0 kVA", hp: "4.0 - 5.0 kVA (1-PH)", mountingSpec: "Input: 90V - 290V | Output: 220V ±8%", shaftDiameter: "Floor Heavy Duty", standard: "IS 8448" },
-          { frame: "7.5 kVA - 10.0 kVA", hp: "7.5 - 10.0 kVA (1-PH)", mountingSpec: "Input: 90V - 290V | Output: 220V ±8%", shaftDiameter: "Floor with Castors", standard: "IS 8448" }
+          { frame: "0.5 kVA - 1.0 kVA", hp: "0.5 - 1.0 kVA", mountingSpec: "Input: 130V - 280V | Output: 220V/230V ±8%", shaftDiameter: "Wall / Table Mount", standard: "IS 8448", phase: "1-Phase" },
+          { frame: "2.0 kVA - 3.0 kVA", hp: "2.0 - 3.0 kVA", mountingSpec: "Input: 110V - 280V | Output: 220V/230V ±8%", shaftDiameter: "Wall / Floor Mount", standard: "IS 8448", phase: "1-Phase" },
+          { frame: "4.0 kVA - 5.0 kVA", hp: "4.0 - 5.0 kVA", mountingSpec: "Input: 90V - 290V | Output: 220V/230V ±8%", shaftDiameter: "Floor Heavy Duty", standard: "IS 8448", phase: "1-Phase" },
+          { frame: "7.5 kVA - 10.0 kVA", hp: "7.5 - 10.0 kVA", mountingSpec: "Input: 90V - 290V | Output: 220V/230V ±8%", shaftDiameter: "Floor with Castors", standard: "IS 8448", phase: "1-Phase" }
         ],
         applications: [
           "Split & Window Air Conditioners (0.75 Ton to 2.5 Ton)",
@@ -434,23 +394,27 @@ export const PRODUCTS_DATA: ProductItem[] = [
       {
         id: "servo-type",
         name: "Servo Type Voltage Stabilizer",
-        code: "Servo Type (±1% Precision)",
-        subtitle: "Microcontroller-driven continuous variable autotransformer (Variac) with high-torque servo motor",
-        description: "Surge Shore Industrial Servo Voltage Stabilizers deliver stepless, ultra-precise ±1% output voltage stability through a high-torque synchronous servo motor driving a copper toroidal/column variac. Designed for heavy industrial loads, CNC machinery, laser cutters, medical imaging, and whole-plant incomers with zero waveform distortion.",
+        code: "Servo Type",
+        subtitle: "Microcontroller-driven continuous variable autotransformer (Variac) available in 1-Phase & 3-Phase",
+        description: "Surge Shore Industrial Servo Voltage Stabilizers deliver stepless, ultra-precise ±1% output voltage stability and are available in both 1-Phase (3 kVA to 25 kVA) and 3-Phase (10 kVA to 500+ kVA) configurations. Designed for heavy industrial loads, CNC machinery, laser cutters, medical imaging, and whole-plant incomers with zero waveform distortion and high-torque AC synchronous servo motors.",
+        phase: "Both",
+        phaseLabel: "1-Phase & 3-Phase Both Available",
         features: [
+          "Available in both 1-Phase (230V ±1%) and 3-Phase (415V ±1% Balanced / Unbalanced) configurations",
           "Microcontroller-driven continuous stepless regulation with ±1% rock-solid output voltage accuracy",
           "Zero electrical waveform distortion (THD < 1%) safe for sensitive CNCs and PLC automation",
           "High-purity 99.9% electrolytic copper toroidal & vertical column variac with carbon brush arm",
-          "Ultra-wide input voltage windows (e.g., 300V - 470V to 415V ±1% 3-Phase; 140V - 280V 1-Phase)",
+          "Ultra-wide input voltage windows: 140V–280V (1-Phase) and 280V–480V / 300V–470V (3-Phase)",
           "Comprehensive digital multifunction LCD display: Phase Volts, Line Currents, Frequency, Faults",
           "Complete industrial protection suite: Overload, Short-Circuit, Single Phasing & Phase Reversal",
           "Available in Natural Air Cooled (up to 50 kVA) and Heavy-Duty Oil Cooled Radiator (up to 500+ kVA)"
         ],
         dimensions: [
-          { frame: "3.0 kVA - 10 kVA (1-PH/3-PH)", hp: "3 - 10 kVA", mountingSpec: "Input: 140V-280V / 300V-470V | Out: ±1%", shaftDiameter: "Air Cooled Floor Mount", standard: "IS 9815" },
-          { frame: "15 kVA - 30 kVA (3-PH)", hp: "15 - 30 kVA", mountingSpec: "Input: 300V-470V | Out: 415V ±1%", shaftDiameter: "Air Cooled Floor Mount", standard: "IS 9815" },
-          { frame: "50 kVA - 100 kVA (3-PH)", hp: "50 - 100 kVA", mountingSpec: "Input: 280V-480V | Out: 415V ±1%", shaftDiameter: "Air/Oil Cooled Heavy Base", standard: "IS 9815" },
-          { frame: "150 kVA - 500 kVA (3-PH)", hp: "150 - 500 kVA", mountingSpec: "Input: 260V-490V | Out: 415V ±1%", shaftDiameter: "Oil Cooled with Radiator Tank", standard: "IS 9815" }
+          { frame: "3.0 kVA - 10 kVA (1-PH)", hp: "3 - 10 kVA", mountingSpec: "Input: 140V - 280V | Out: 230V ±1%", shaftDiameter: "Air Cooled Floor Mount", standard: "IS 9815", phase: "1-Phase" },
+          { frame: "15 kVA - 25 kVA (1-PH)", hp: "15 - 25 kVA", mountingSpec: "Input: 140V - 280V | Out: 230V ±1%", shaftDiameter: "Air Cooled Heavy Duty", standard: "IS 9815", phase: "1-Phase" },
+          { frame: "10 kVA - 30 kVA (3-PH)", hp: "10 - 30 kVA", mountingSpec: "Input: 300V - 470V | Out: 415V ±1%", shaftDiameter: "Air Cooled Floor Mount", standard: "IS 9815", phase: "3-Phase" },
+          { frame: "50 kVA - 100 kVA (3-PH)", hp: "50 - 100 kVA", mountingSpec: "Input: 280V - 480V | Out: 415V ±1%", shaftDiameter: "Air/Oil Cooled Heavy Base", standard: "IS 9815", phase: "3-Phase" },
+          { frame: "150 kVA - 500 kVA (3-PH)", hp: "150 - 500 kVA", mountingSpec: "Input: 260V - 490V | Out: 415V ±1%", shaftDiameter: "Oil Cooled with Radiator Tank", standard: "IS 9815", phase: "3-Phase" }
         ],
         applications: [
           "CNC Machining Centers, VMCs, EDM & Fiber Laser Cutting Machines",
@@ -464,62 +428,44 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-        title: "Relay Type Voltage Stabilizer - Compact Industrial Cabinet",
-        angleLabel: "Front View (Relay Type)",
-        description: "Compact wall-mount / tabletop powder-coated CRCA steel cabinet with digital output voltmeter and status LEDs."
+        url: "/553cb61f-e729-483c-92ed-e3fa1ba3b685.png",
+        title: "Surge Shore Microprocessor Controlled Relay Type Voltage Stabilizer",
+        angleLabel: "Vertical Wall-Mount Unit",
+        description: "Wall-mount heavy-duty cabinet with LED 7-segment digital voltage display, micro contributor circuit, time-delay relay, and power-saving technology."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
-        title: "Multi-Tap Copper Transformer & Sealed Relay Array",
-        angleLabel: "Relay & Transformer Core",
-        description: "99.9% pure copper multi-tapped autotransformer coupled to high-duty sealed electromagnetic switching relays."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=1200&q=80",
-        title: "Protected Terminal Block & Time-Delay Controls",
-        angleLabel: "Terminals & Controls",
-        description: "Heavy-duty screw terminal block with high-voltage cutoff bypass toggle and surge protection varistors."
+        url: "/ee06c767-4ce5-484f-aba4-71677d4dde8d.png",
+        title: "Surge Shore Industrial Relay Type Voltage Stabilizer Console",
+        angleLabel: "Horizontal Console Unit",
+        description: "Two-tone industrial enclosure equipped with Siemens MCB protection switch, digital display readout, heavy-duty cabinet, and power-saving circuitry."
       }
     ],
     galleryFlange: [
       {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        title: "Industrial Servo Voltage Stabilizer - Floor Standing Enclosure",
-        angleLabel: "Front Panel (Servo Type)",
-        description: "Heavy-duty floor-mounted CRCA industrial cubicle with digital LCD/LED phase voltage & current telemetry."
+        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        title: "Surge Shore Three-Phase Smart Servo Controller Unit",
+        angleLabel: "3-Phase Smart Servo Cabinet",
+        description: "Industrial dual-door enclosure with Three Phase Smart Servo Controller LCD, rotary main selector, warning indicator, and 4-pole MCB mounted on heavy-duty caster wheels."
       },
       {
-        url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-        title: "Precision Toroidal Variac & Servo Motor Drive Assembly",
-        angleLabel: "Internal Variac & Motor",
-        description: "High-grade electrolytic copper toroidal variac driven by high-torque AC synchronous servo motor for ±1% continuous regulation."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&q=80",
-        title: "Industrial Busbars, Protection Relays & Manual Bypass Switch",
-        angleLabel: "Busbars & Bypass",
-        description: "Solid electrolytic copper busbars, phase reversal protection, and heavy-duty automatic bypass switchgear."
+        url: "/2a1c323c-b154-47a7-9d30-e69f1953bc88.png",
+        title: "Surge Shore Single-Phase Servo Stabilizer Unit",
+        angleLabel: "1-Phase Servo Console",
+        description: "Heavy-duty console unit with LED Digital Servo Power Controller, Siemens MCB protection, and Salzer rotary switchgear for continuous voltage stabilization."
       }
     ],
     galleryDefault: [
       {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        title: "Industrial Servo Voltage Stabilizer Enclosure",
-        angleLabel: "Front Panel",
-        description: "Heavy-duty CRCA powder-coated cabinet with digital LCD/LED voltage & current telemetry."
+        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        title: "Surge Shore Three-Phase Smart Servo Controller Unit",
+        angleLabel: "3-Phase Servo Unit",
+        description: "Industrial dual-door enclosure with Three Phase Smart Servo Controller LCD, rotary main selector, warning indicator, and 4-pole MCB on caster wheels."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
-        title: "Toroidal Copper Variac & Servo Mechanism",
-        angleLabel: "Internal Variac",
-        description: "99.9% electrolytic copper variac driven by high-response precision servo carbon brush motor."
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=1200&q=80",
-        title: "Heavy-Duty Brass Terminals & Circuit Protection",
-        angleLabel: "Terminals & Bypass",
-        description: "Solid brass terminal lugs, automatic bypass switch, and surge protection modules."
+        url: "/2a1c323c-b154-47a7-9d30-e69f1953bc88.png",
+        title: "Surge Shore Single-Phase Servo Stabilizer Console",
+        angleLabel: "1-Phase Console",
+        description: "Two-tone industrial enclosure featuring digital LED power controller, circuit breaker, and 3-position rotary cam switch."
       }
     ]
   },
@@ -553,22 +499,22 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryDefault: [
       {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-        title: "Floor-Standing Industrial Control Panel Enclosure",
-        angleLabel: "Enclosure",
-        description: "IP55 CRCA sheet steel enclosure with 7-tank powder coating, safety interlocks and pilot lamps."
+        url: "/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png",
+        title: "Surge Shore Industrial Automation Panel (Siemens PLC & HMI)",
+        angleLabel: "Dual-Door Floor Cabinet",
+        description: "Floor-standing industrial control cabinet with Siemens SIMATIC S7-1200 PLC, Simatic HMI touchscreen, emergency stop, MCB array, Siemens contactors, and terminal blocks."
       },
       {
-        url: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        title: "Internal Busbar System & Switchgear Wiring",
-        angleLabel: "Internal Wiring",
-        description: "Electrolytic grade copper busbars, Schneider/Siemens contactors, and neat wiring ducting."
+        url: "/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png",
+        title: "Surge Shore Wall-Mount Automation Control Panel",
+        angleLabel: "Compact Wall-Mount HMI",
+        description: "Wall-mount automation enclosure featuring Siemens HMI process monitoring display, control pushbuttons, internal PLC, SMPS, and circuit protection."
       },
       {
-        url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-        title: "HMI Touchscreen & Front Door Metering",
-        angleLabel: "HMI & Controls",
-        description: "Intuitive touch interface, digital power analyzers, illuminated pushbuttons and safety emergency stops."
+        url: "/4226810a-b806-4864-84b1-560112372c31.png",
+        title: "Surge Shore Multi-Feeder Power Distribution Panel (PCC / MCC)",
+        angleLabel: "Power Distribution (12-Feeder)",
+        description: "Heavy-duty power distribution panel equipped with Main Incomer ACB/MCCB, Danger 415V protection, analog & digital metering, and 12 individual outgoing feeder modules."
       }
     ]
   }

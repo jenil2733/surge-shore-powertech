@@ -8,6 +8,8 @@ export interface MountingSubCategory {
   code: string; // e.g. "B3 (Foot Mounted)" or "Relay-Based AVR"
   subtitle: string;
   description: string;
+  phase?: MotorPhase;
+  phaseLabel?: string;
   features: string[];
   dimensions: {
     frame: string;
@@ -15,6 +17,7 @@ export interface MountingSubCategory {
     mountingSpec: string; // Foot hole spacing (A x B) or Flange PCD or Input/Output spec
     shaftDiameter: string;
     standard: string;
+    phase?: '1-Phase' | '3-Phase' | 'Both';
   }[];
   applications: string[];
 }
