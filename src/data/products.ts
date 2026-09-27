@@ -265,7 +265,21 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFlange: [
       {
-        url: "/IMG_5521.PNG",
+        url: "/surge-shore-aluminium-flange-mounted.png",
+        title: "Surge Shore Aluminium Flange Mounted Motor (B5) - Side Profile",
+        angleLabel: "Flange Profile (B5)",
+        description: "Surge Shore high-efficiency aluminium flange mounted motor with precision CNC-machined spigot face, terminal box, cooling ribs, and yellow drive shaft."
+      }
+    ],
+    galleryDefault: [
+      {
+        url: "/surge-shore-aluminium-foot-mounted.png",
+        title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
+        angleLabel: "Main View (B3)",
+        description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."
+      },
+      {
+        url: "/surge-shore-aluminium-flange-mounted.png",
         title: "Surge Shore Aluminium Flange Mounted Motor (B5) - Side Profile",
         angleLabel: "Flange Profile (B5)",
         description: "Surge Shore high-efficiency aluminium flange mounted motor with precision CNC-machined spigot face, terminal box, cooling ribs, and yellow drive shaft."

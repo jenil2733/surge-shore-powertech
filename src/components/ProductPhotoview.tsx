@@ -159,7 +159,8 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
           saveImageFile(file, '/IMG_5524.PNG');
         } else if (lower.includes('5525')) {
           saveImageFile(file, '/IMG_5525.PNG');
-        } else if (lower.includes('5521')) {
+        } else if (lower.includes('5521') || lower.includes('flange')) {
+          saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
           saveImageFile(file, '/IMG_5521.PNG');
         } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19')) {
           saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
@@ -194,7 +195,8 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         saveImageFile(file, '/IMG_5524.PNG');
       } else if (lower.includes('5525')) {
         saveImageFile(file, '/IMG_5525.PNG');
-      } else if (lower.includes('5521')) {
+      } else if (lower.includes('5521') || lower.includes('flange')) {
+        saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
         saveImageFile(file, '/IMG_5521.PNG');
       } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19')) {
         saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
