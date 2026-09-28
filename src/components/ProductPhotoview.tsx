@@ -96,11 +96,21 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
 
   useEffect(() => {
     if (currentPhoto?.url) {
-      // Clear stale duplicate cache if stored for flng_3 or flange_3
+      // Clear stale duplicate cache if stored for flng_3 or foot_alu
       if (currentPhoto.url.includes('flng_3')) {
         try {
           localStorage.removeItem('ss_photo_/flng_3.png');
           localStorage.removeItem('ss_photo_/flng_3.png'.toLowerCase());
+        } catch {
+          // ignore
+        }
+      }
+      if (currentPhoto.url.includes('foot_alu') || currentPhoto.url.includes('regenerated_image_1790584799192')) {
+        try {
+          localStorage.removeItem('ss_photo_/foot_alu.png');
+          localStorage.removeItem('ss_photo_/foot_alu.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/regenerated_image_1790584799192.png');
+          localStorage.removeItem('ss_photo_/regenerated_image_1790584799192.png'.toLowerCase());
         } catch {
           // ignore
         }
@@ -175,7 +185,8 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         } else if (lower.includes('5521') || lower.includes('flange')) {
           saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
           saveImageFile(file, '/IMG_5521.PNG');
-        } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+        } else if (lower.includes('foot_alu') || lower.includes('foot-alu') || lower.includes('foot_al') || lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+          saveImageFile(file, '/foot_alu.png');
           saveImageFile(file, '/regenerated_image_1790584799192.png');
           saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
         } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {
@@ -215,7 +226,8 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
       } else if (lower.includes('5521') || lower.includes('flange')) {
         saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
         saveImageFile(file, '/IMG_5521.PNG');
-      } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+      } else if (lower.includes('foot_alu') || lower.includes('foot-alu') || lower.includes('foot_al') || lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+        saveImageFile(file, '/foot_alu.png');
         saveImageFile(file, '/regenerated_image_1790584799192.png');
         saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
       } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {

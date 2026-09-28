@@ -257,7 +257,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "/regenerated_image_1790584799192.png",
+        url: "/foot_alu.png",
         title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
         angleLabel: "Main View (B3)",
         description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."
@@ -273,7 +273,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryDefault: [
       {
-        url: "/regenerated_image_1790584799192.png",
+        url: "/foot_alu.png",
         title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
         angleLabel: "Main View (B3)",
         description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."

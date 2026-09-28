@@ -108,9 +108,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
                 }}
                 className="group relative bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-2xl hover:border-[#0B2559]/30 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
               >
-                {/* Subtle Ambient Radial Glow */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl from-[#FF6B00]/10 via-[#0B2559]/5 to-transparent rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500" />
-
                 {/* Top Photographic Chamber */}
                 <div className="p-3 sm:p-5 pb-1 sm:pb-2 relative">
                   {/* Canvas Stage */}
