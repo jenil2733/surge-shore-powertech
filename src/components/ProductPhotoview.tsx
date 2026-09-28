@@ -115,6 +115,34 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
           // ignore
         }
       }
+      if (currentPhoto.url.includes('relay_vtlg') || currentPhoto.url.includes('white_blank') || currentPhoto.url.includes('relay_1') || currentPhoto.url.includes('ee06c767')) {
+        try {
+          localStorage.removeItem('ss_photo_/relay_vtlg.png');
+          localStorage.removeItem('ss_photo_/relay_vtlg.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/white_blank.png');
+          localStorage.removeItem('ss_photo_/white_blank.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/relay_1.png');
+          localStorage.removeItem('ss_photo_/relay_1.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
+          localStorage.removeItem('ss_photo_/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
+        } catch {
+          // ignore
+        }
+      }
+      if (currentPhoto.url.includes('servo_blank') || currentPhoto.url.includes('9ae0') || currentPhoto.url.includes('2a1c')) {
+        try {
+          localStorage.removeItem('ss_photo_/servo_blank.png');
+          localStorage.removeItem('ss_photo_/servo_blank.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/servo_blank_1.png');
+          localStorage.removeItem('ss_photo_/servo_blank_1.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/servo_blank_2.png');
+          localStorage.removeItem('ss_photo_/servo_blank_2.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
+          localStorage.removeItem('ss_photo_/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
+        } catch {
+          // ignore
+        }
+      }
 
       const stored = 
         localStorage.getItem('ss_photo_' + currentPhoto.url) ||
@@ -197,11 +225,17 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
           saveImageFile(file, '/IMG-20260724-WA0002.jpg.jpeg');
         } else if (lower.includes('553c') || lower.includes('vertical') || lower.includes('wall')) {
           saveImageFile(file, '/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
-        } else if (lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
+        } else if (lower.includes('vtlg') || lower.includes('relay_vtlg') || lower.includes('white_blank') || lower.includes('white-blank') || lower.includes('blank') || lower.includes('relay_1') || lower.includes('relay-1') || lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
+          saveImageFile(file, '/relay_vtlg.png');
+          saveImageFile(file, '/white_blank.png');
+          saveImageFile(file, '/relay_1.png');
           saveImageFile(file, '/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
         } else if (lower.includes('2a1c') || lower.includes('1phase') || (lower.includes('servo') && !lower.includes('3phase') && !lower.includes('smart'))) {
+          saveImageFile(file, '/servo_blank_2.png');
           saveImageFile(file, '/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
-        } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel')) {
+        } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel') || lower.includes('servo')) {
+          saveImageFile(file, '/servo_blank.png');
+          saveImageFile(file, '/servo_blank_1.png');
           saveImageFile(file, '/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
         } else if (lower.includes('f7c4') || lower.includes('s7-1200') || (lower.includes('automation') && lower.includes('panel') && !lower.includes('wall'))) {
           saveImageFile(file, '/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');
@@ -238,11 +272,17 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         saveImageFile(file, '/IMG-20260724-WA0002.jpg.jpeg');
       } else if (lower.includes('553c') || lower.includes('vertical') || lower.includes('wall-mount')) {
         saveImageFile(file, '/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
-      } else if (lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
+      } else if (lower.includes('vtlg') || lower.includes('relay_vtlg') || lower.includes('white_blank') || lower.includes('white-blank') || lower.includes('blank') || lower.includes('relay_1') || lower.includes('relay-1') || lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
+        saveImageFile(file, '/relay_vtlg.png');
+        saveImageFile(file, '/white_blank.png');
+        saveImageFile(file, '/relay_1.png');
         saveImageFile(file, '/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
       } else if (lower.includes('2a1c') || lower.includes('1phase') || (lower.includes('servo') && !lower.includes('3phase') && !lower.includes('smart'))) {
+        saveImageFile(file, '/servo_blank_2.png');
         saveImageFile(file, '/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
-      } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel')) {
+      } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel') || lower.includes('servo')) {
+        saveImageFile(file, '/servo_blank.png');
+        saveImageFile(file, '/servo_blank_1.png');
         saveImageFile(file, '/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
       } else if (lower.includes('f7c4') || lower.includes('s7-1200') || (lower.includes('automation') && lower.includes('panel') && !lower.includes('wall'))) {
         saveImageFile(file, '/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');

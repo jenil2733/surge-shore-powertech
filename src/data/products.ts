@@ -442,44 +442,38 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "/553cb61f-e729-483c-92ed-e3fa1ba3b685.png",
-        title: "Surge Shore Microprocessor Controlled Relay Type Voltage Stabilizer",
-        angleLabel: "Vertical Wall-Mount Unit",
-        description: "Wall-mount heavy-duty cabinet with LED 7-segment digital voltage display, micro contributor circuit, time-delay relay, and power-saving technology."
-      },
-      {
-        url: "/ee06c767-4ce5-484f-aba4-71677d4dde8d.png",
+        url: "/relay_vtlg.png",
         title: "Surge Shore Industrial Relay Type Voltage Stabilizer Console",
-        angleLabel: "Horizontal Console Unit",
-        description: "Two-tone industrial enclosure equipped with Siemens MCB protection switch, digital display readout, heavy-duty cabinet, and power-saving circuitry."
+        angleLabel: "Console Unit",
+        description: "Surge Shore Relay-Type automatic voltage regulator in heavy-duty cabinet featuring Siemens MCB breaker, micro controller circuit, digital LED voltage display, and intelligent time delay relay."
       }
     ],
     galleryFlange: [
       {
-        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
-        title: "Surge Shore Three-Phase Smart Servo Controller Unit",
-        angleLabel: "3-Phase Smart Servo Cabinet",
-        description: "Industrial dual-door enclosure with Three Phase Smart Servo Controller LCD, rotary main selector, warning indicator, and 4-pole MCB mounted on heavy-duty caster wheels."
+        url: "/servo_blank.png",
+        title: "Surge Shore Industrial Servo Voltage Stabilizer - 3-Phase",
+        angleLabel: "3-Phase Unit",
+        description: "Surge Shore Industrial Servo-Type automatic voltage regulator - Three-Phase heavy-duty cabinet."
       },
       {
-        url: "/2a1c323c-b154-47a7-9d30-e69f1953bc88.png",
-        title: "Surge Shore Single-Phase Servo Stabilizer Unit",
-        angleLabel: "1-Phase Servo Console",
-        description: "Heavy-duty console unit with LED Digital Servo Power Controller, Siemens MCB protection, and Salzer rotary switchgear for continuous voltage stabilization."
+        url: "/servo_blank_2.png",
+        title: "Surge Shore Industrial Servo Voltage Stabilizer - 1-Phase",
+        angleLabel: "1-Phase Unit",
+        description: "Surge Shore Industrial Servo-Type automatic voltage regulator - Single-Phase console."
       }
     ],
     galleryDefault: [
       {
-        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
-        title: "Surge Shore Three-Phase Smart Servo Controller Unit",
-        angleLabel: "3-Phase Servo Unit",
-        description: "Industrial dual-door enclosure with Three Phase Smart Servo Controller LCD, rotary main selector, warning indicator, and 4-pole MCB on caster wheels."
+        url: "/relay_vtlg.png",
+        title: "Surge Shore Industrial Relay Type Voltage Stabilizer Console",
+        angleLabel: "Relay Console",
+        description: "Surge Shore Relay-Type automatic voltage regulator in heavy-duty cabinet."
       },
       {
-        url: "/2a1c323c-b154-47a7-9d30-e69f1953bc88.png",
-        title: "Surge Shore Single-Phase Servo Stabilizer Console",
-        angleLabel: "1-Phase Console",
-        description: "Two-tone industrial enclosure featuring digital LED power controller, circuit breaker, and 3-position rotary cam switch."
+        url: "/servo_blank.png",
+        title: "Surge Shore Servo Type Voltage Stabilizer",
+        angleLabel: "Servo Stabilizer",
+        description: "Surge Shore Industrial Servo-Type automatic voltage regulator."
       }
     ]
   },
