@@ -148,16 +148,16 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFlange: [
       {
-        url: "/IMG_5524.PNG",
+        url: "/flange_3.png",
         title: "Cast Iron Flange Mounted (B5) - Side Profile",
         angleLabel: "Flange Profile (B5)",
         description: "Surge Shore heavy-duty cast iron body with machined circular B5 mounting flange, yellow protective shaft cap, and top terminal box."
       },
       {
-        url: "/IMG_5525.PNG",
-        title: "Cast Iron Flange Mounted (B5) - Surge Shore Nameplate View",
-        angleLabel: "Nameplate & Flange Face",
-        description: "Surge Shore Powertech LLP certified specification nameplate, precision concentric mounting spigot, and IP55 cast iron enclosure."
+        url: "/flng_3.png",
+        title: "Cast Iron Flange Mounted (B5) - Nameplate & Rating",
+        angleLabel: "Nameplate (flng_3)",
+        description: "Surge Shore certified metal specification nameplate with 1-phase 50Hz rating, terminal enclosure with wiring leads, and concentric B5 flange."
       }
     ]
   },
@@ -257,7 +257,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFoot: [
       {
-        url: "/surge-shore-aluminium-foot-mounted.png",
+        url: "/regenerated_image_1790584799192.png",
         title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
         angleLabel: "Main View (B3)",
         description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."
@@ -273,7 +273,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryDefault: [
       {
-        url: "/surge-shore-aluminium-foot-mounted.png",
+        url: "/regenerated_image_1790584799192.png",
         title: "Surge Shore Aluminium Foot Mounted Motor (B3) - Studio Shot",
         angleLabel: "Main View (B3)",
         description: "Surge Shore 3-Phase lightweight die-cast aluminium foot-mounted industrial motor featuring precision cooling ribs, terminal box, certified nameplate, and yellow drive shaft."

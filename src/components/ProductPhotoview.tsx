@@ -96,6 +96,16 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
 
   useEffect(() => {
     if (currentPhoto?.url) {
+      // Clear stale duplicate cache if stored for flng_3 or flange_3
+      if (currentPhoto.url.includes('flng_3')) {
+        try {
+          localStorage.removeItem('ss_photo_/flng_3.png');
+          localStorage.removeItem('ss_photo_/flng_3.png'.toLowerCase());
+        } catch {
+          // ignore
+        }
+      }
+
       const stored = 
         localStorage.getItem('ss_photo_' + currentPhoto.url) ||
         localStorage.getItem('ss_photo_' + currentPhoto.url.toLowerCase());
@@ -155,14 +165,18 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         const lower = file.name.toLowerCase();
-        if (lower.includes('5524')) {
-          saveImageFile(file, '/IMG_5524.PNG');
-        } else if (lower.includes('5525')) {
-          saveImageFile(file, '/IMG_5525.PNG');
+        if (lower.includes('flng_3') || lower.includes('flng-3') || lower.includes('flng3') || lower.includes('5525')) {
+          saveImageFile(file, '/flng_3.png');
+        } else if (lower.includes('flange_1_phase') || lower.includes('flange-1-phase') || lower.includes('flange_1') || lower.includes('flange-1') || lower.includes('5524')) {
+          saveImageFile(file, '/flange_1_phase.png');
+          saveImageFile(file, '/flange_1.png');
+        } else if (lower.includes('flange_3') || lower.includes('flange-3')) {
+          saveImageFile(file, '/flange_3.png');
         } else if (lower.includes('5521') || lower.includes('flange')) {
           saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
           saveImageFile(file, '/IMG_5521.PNG');
-        } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19')) {
+        } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+          saveImageFile(file, '/regenerated_image_1790584799192.png');
           saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
         } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {
           saveImageFile(file, '/3df1fd38-0c74-49ec-b7d8-3e3cc594ad94.png');
@@ -191,14 +205,18 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
     } else {
       const file = files[0];
       const lower = file.name.toLowerCase();
-      if (lower.includes('5524')) {
-        saveImageFile(file, '/IMG_5524.PNG');
-      } else if (lower.includes('5525')) {
-        saveImageFile(file, '/IMG_5525.PNG');
+      if (lower.includes('flng_3') || lower.includes('flng-3') || lower.includes('flng3') || lower.includes('5525')) {
+        saveImageFile(file, '/flng_3.png');
+      } else if (lower.includes('flange_1_phase') || lower.includes('flange-1-phase') || lower.includes('flange_1') || lower.includes('flange-1') || lower.includes('5524')) {
+        saveImageFile(file, '/flange_1_phase.png');
+        saveImageFile(file, '/flange_1.png');
+      } else if (lower.includes('flange_3') || lower.includes('flange-3')) {
+        saveImageFile(file, '/flange_3.png');
       } else if (lower.includes('5521') || lower.includes('flange')) {
         saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
         saveImageFile(file, '/IMG_5521.PNG');
-      } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19')) {
+      } else if (lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
+        saveImageFile(file, '/regenerated_image_1790584799192.png');
         saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
       } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {
         saveImageFile(file, '/3df1fd38-0c74-49ec-b7d8-3e3cc594ad94.png');
@@ -237,8 +255,9 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
   }, [imageError, currentPhoto?.url]);
 
   const handleImageError = () => {
-    // If the image fails and ends with .PNG, try .png lowercase
-    if (imgSrc.endsWith('.PNG')) {
+    if (imgSrc.includes(' (1)') || imgSrc.includes(' (2)')) {
+      setImgSrc(imgSrc.replace(/\s\(\d\)/, ''));
+    } else if (imgSrc.endsWith('.PNG')) {
       setImgSrc(imgSrc.replace(/\.PNG$/, '.png'));
     } else {
       setImageError(true);
@@ -266,7 +285,7 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
     <div className={`relative w-full flex flex-col gap-3 select-none ${className}`}>
       {/* Main Showcase Frame - Full Bleed Photo */}
       <div
-        className={`relative w-full ${heightClasses} rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm border border-slate-200/80 group bg-white`}
+        className={`relative w-full ${heightClasses} rounded-2xl sm:rounded-3xl overflow-hidden group bg-transparent flex items-center justify-center`}
       >
         {/* Top Mounting / SubType Selector (Only shown if interactive with subcategories) */}
         {interactive && product.subCategories && product.subCategories.length > 0 && onMountingChange && (
@@ -304,6 +323,14 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         )}
 
         {/* Photographic Image Display - Full Cover */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={(e) => handleFiles(e.target.files)}
+        />
         <div 
           onClick={() => interactive && size !== 'card' && setIsZoomOpen(true)}
           onDragOver={(e) => {
@@ -348,7 +375,7 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                   alt={currentPhoto.title}
                   onError={handleImageError}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105 drop-shadow-sm select-none"
+                  className="w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105 select-none"
                 />
               ) : (
                 <div 
@@ -378,14 +405,6 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                       : 'bg-gradient-to-b from-slate-50 to-slate-100 hover:bg-slate-200/50 border border-slate-200'
                   }`}
                 >
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    multiple
-                    className="hidden"
-                    onChange={(e) => handleFiles(e.target.files)}
-                  />
                   <div className="w-12 h-12 rounded-2xl bg-orange-100/90 text-[#FF6B00] flex items-center justify-center mb-2 shadow-xs group-hover:scale-105 transition-transform">
                     {isUploading ? (
                       <div className="w-6 h-6 border-2 border-[#FF6B00] border-t-transparent rounded-full animate-spin" />
@@ -404,19 +423,21 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                 </div>
               )}
 
-              {/* Subtle Zoom Button in Corner */}
+              {/* Corner Controls */}
               {interactive && size !== 'card' && (
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsZoomOpen(true);
-                  }}
-                  className="absolute bottom-3 right-3 p-2 rounded-xl bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all cursor-pointer shadow-md opacity-75 hover:opacity-100 z-10"
-                  title="Enlarge Photo"
-                >
-                  <Maximize2 className="w-4 h-4" />
-                </button>
+                <div className="absolute bottom-3 right-3 flex items-center gap-1.5 z-10">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsZoomOpen(true);
+                    }}
+                    className="p-2 rounded-xl bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all cursor-pointer shadow-md opacity-75 hover:opacity-100"
+                    title="Enlarge Photo"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                </div>
               )}
             </motion.div>
           </AnimatePresence>
@@ -445,9 +466,9 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         </div>
       </div>
 
-      {/* Dot Indicators for Image Pagination */}
+      {/* Clean Pagination Dot Indicators */}
       {interactive && activeGallery.length > 1 && (
-        <div className="flex items-center justify-center gap-2 pt-2.5 pb-1">
+        <div className="flex items-center justify-center gap-2 pt-1.5 pb-0.5">
           {activeGallery.map((photo, idx) => {
             const isActive = activePhotoIndex === idx;
             return (
@@ -455,13 +476,13 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                 key={`${photo.url}-${idx}`}
                 type="button"
                 onClick={() => setActivePhotoIndex(idx)}
-                aria-label={`View image ${idx + 1}: ${photo.angleLabel}`}
+                aria-label={`View photo ${idx + 1}: ${photo.angleLabel || photo.title}`}
                 className={`transition-all duration-300 rounded-full cursor-pointer focus:outline-none ${
                   isActive
                     ? 'w-7 h-2 bg-[#FF6B00] shadow-sm'
                     : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
                 }`}
-                title={`${photo.angleLabel} (${idx + 1}/${activeGallery.length})`}
+                title={`${photo.angleLabel || photo.title} (${idx + 1}/${activeGallery.length})`}
               />
             );
           })}
@@ -505,7 +526,7 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                   src={imgSrc || currentPhoto.url}
                   alt={currentPhoto.title}
                   referrerPolicy="no-referrer"
-                  className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                  className="max-w-full max-h-full object-contain rounded-lg select-none"
                 />
 
                 {activeGallery.length > 1 && (
