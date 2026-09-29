@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Maximize2, 
@@ -10,9 +10,7 @@ import {
   Sparkles,
   Layers,
   CheckCircle2,
-  Info,
-  UploadCloud,
-  ImagePlus
+  Info
 } from 'lucide-react';
 import { ProductItem, ProductPhoto } from '../types';
 
@@ -90,9 +88,6 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
   }, [mountingType, product.id]);
 
   const currentPhoto = activeGallery[activePhotoIndex] || activeGallery[0];
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     if (currentPhoto?.url) {
@@ -129,16 +124,13 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
           // ignore
         }
       }
-      if (currentPhoto.url.includes('servo_blank') || currentPhoto.url.includes('9ae0') || currentPhoto.url.includes('2a1c')) {
+      if (currentPhoto.url.includes('panel_blank') || currentPhoto.url.includes('f7c4') || currentPhoto.url.includes('3e75') || currentPhoto.url.includes('4226')) {
         try {
-          localStorage.removeItem('ss_photo_/servo_blank.png');
-          localStorage.removeItem('ss_photo_/servo_blank.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/servo_blank_1.png');
-          localStorage.removeItem('ss_photo_/servo_blank_1.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/servo_blank_2.png');
-          localStorage.removeItem('ss_photo_/servo_blank_2.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
-          localStorage.removeItem('ss_photo_/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
+          localStorage.removeItem('ss_photo_/panel_blank.png');
+          localStorage.removeItem('ss_photo_/panel_blank.png'.toLowerCase());
+          localStorage.removeItem('ss_photo_/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');
+          localStorage.removeItem('ss_photo_/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png');
+          localStorage.removeItem('ss_photo_/4226810a-b806-4864-84b1-560112372c31.png');
         } catch {
           // ignore
         }
@@ -156,155 +148,6 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
       }
     }
   }, [currentPhoto?.url, activePhotoIndex]);
-
-  const saveImageFile = async (file: File, targetUrl?: string) => {
-    setIsUploading(true);
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const base64 = e.target?.result as string;
-      if (!base64) {
-        setIsUploading(false);
-        return;
-      }
-      
-      const key = targetUrl || currentPhoto.url;
-      try {
-        localStorage.setItem('ss_photo_' + key, base64);
-        localStorage.setItem('ss_photo_' + key.toLowerCase(), base64);
-      } catch (err) {
-        console.warn('Storage quota note:', err);
-      }
-      
-      if (!targetUrl || targetUrl === currentPhoto.url) {
-        setImgSrc(base64);
-        setImageError(false);
-      }
-
-      // Persist to server /public directory
-      try {
-        const cleanFilename = (targetUrl || currentPhoto.url).replace(/^\//, '');
-        await fetch('/api/upload-photo', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ filename: cleanFilename, base64 })
-        });
-      } catch (err) {
-        console.warn('Server upload notice:', err);
-      } finally {
-        setIsUploading(false);
-      }
-    };
-    reader.readAsDataURL(file);
-  };
-
-  const handleFiles = (files: FileList | null) => {
-    if (!files || files.length === 0) return;
-    if (files.length > 1) {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const lower = file.name.toLowerCase();
-        if (lower.includes('flng_3') || lower.includes('flng-3') || lower.includes('flng3') || lower.includes('5525')) {
-          saveImageFile(file, '/flng_3.png');
-        } else if (lower.includes('flange_1_phase') || lower.includes('flange-1-phase') || lower.includes('flange_1') || lower.includes('flange-1') || lower.includes('5524')) {
-          saveImageFile(file, '/flange_1_phase.png');
-          saveImageFile(file, '/flange_1.png');
-        } else if (lower.includes('flange_3') || lower.includes('flange-3')) {
-          saveImageFile(file, '/flange_3.png');
-        } else if (lower.includes('5521') || lower.includes('flange')) {
-          saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
-          saveImageFile(file, '/IMG_5521.PNG');
-        } else if (lower.includes('foot_alu') || lower.includes('foot-alu') || lower.includes('foot_al') || lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
-          saveImageFile(file, '/foot_alu.png');
-          saveImageFile(file, '/regenerated_image_1790584799192.png');
-          saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
-        } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {
-          saveImageFile(file, '/3df1fd38-0c74-49ec-b7d8-3e3cc594ad94.png');
-        } else if (lower.includes('876f') || lower.includes('6000') || lower.includes('silver') || lower.includes('tested')) {
-          saveImageFile(file, '/876fd32f-ba7f-4e51-ab42-f144e0f32fc5.png');
-        } else if (lower.includes('wa0002') || lower.includes('lineup') || lower.includes('range')) {
-          saveImageFile(file, '/IMG-20260724-WA0002.jpg.jpeg');
-        } else if (lower.includes('553c') || lower.includes('vertical') || lower.includes('wall')) {
-          saveImageFile(file, '/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
-        } else if (lower.includes('vtlg') || lower.includes('relay_vtlg') || lower.includes('white_blank') || lower.includes('white-blank') || lower.includes('blank') || lower.includes('relay_1') || lower.includes('relay-1') || lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
-          saveImageFile(file, '/relay_vtlg.png');
-          saveImageFile(file, '/white_blank.png');
-          saveImageFile(file, '/relay_1.png');
-          saveImageFile(file, '/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
-        } else if (lower.includes('2a1c') || lower.includes('1phase') || (lower.includes('servo') && !lower.includes('3phase') && !lower.includes('smart'))) {
-          saveImageFile(file, '/servo_blank_2.png');
-          saveImageFile(file, '/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
-        } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel') || lower.includes('servo')) {
-          saveImageFile(file, '/servo_blank.png');
-          saveImageFile(file, '/servo_blank_1.png');
-          saveImageFile(file, '/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
-        } else if (lower.includes('f7c4') || lower.includes('s7-1200') || (lower.includes('automation') && lower.includes('panel') && !lower.includes('wall'))) {
-          saveImageFile(file, '/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');
-        } else if (lower.includes('3e75') || (lower.includes('automation') && (lower.includes('wall') || lower.includes('tank')))) {
-          saveImageFile(file, '/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png');
-        } else if (lower.includes('4226') || lower.includes('feeder') || lower.includes('distribution') || lower.includes('pcc')) {
-          saveImageFile(file, '/4226810a-b806-4864-84b1-560112372c31.png');
-        } else if (i < activeGallery.length) {
-          saveImageFile(file, activeGallery[i].url);
-        }
-      }
-    } else {
-      const file = files[0];
-      const lower = file.name.toLowerCase();
-      if (lower.includes('flng_3') || lower.includes('flng-3') || lower.includes('flng3') || lower.includes('5525')) {
-        saveImageFile(file, '/flng_3.png');
-      } else if (lower.includes('flange_1_phase') || lower.includes('flange-1-phase') || lower.includes('flange_1') || lower.includes('flange-1') || lower.includes('5524')) {
-        saveImageFile(file, '/flange_1_phase.png');
-        saveImageFile(file, '/flange_1.png');
-      } else if (lower.includes('flange_3') || lower.includes('flange-3')) {
-        saveImageFile(file, '/flange_3.png');
-      } else if (lower.includes('5521') || lower.includes('flange')) {
-        saveImageFile(file, '/surge-shore-aluminium-flange-mounted.png');
-        saveImageFile(file, '/IMG_5521.PNG');
-      } else if (lower.includes('foot_alu') || lower.includes('foot-alu') || lower.includes('foot_al') || lower.includes('chatgpt') || lower.includes('alum') || lower.includes('03_13_19') || lower.includes('1790584799192')) {
-        saveImageFile(file, '/foot_alu.png');
-        saveImageFile(file, '/regenerated_image_1790584799192.png');
-        saveImageFile(file, '/surge-shore-aluminium-foot-mounted.png');
-      } else if (lower.includes('3df1') || lower.includes('3500') || lower.includes('orange')) {
-        saveImageFile(file, '/3df1fd38-0c74-49ec-b7d8-3e3cc594ad94.png');
-      } else if (lower.includes('876f') || lower.includes('6000') || lower.includes('silver') || lower.includes('tested')) {
-        saveImageFile(file, '/876fd32f-ba7f-4e51-ab42-f144e0f32fc5.png');
-      } else if (lower.includes('wa0002') || lower.includes('lineup') || lower.includes('range')) {
-        saveImageFile(file, '/IMG-20260724-WA0002.jpg.jpeg');
-      } else if (lower.includes('553c') || lower.includes('vertical') || lower.includes('wall-mount')) {
-        saveImageFile(file, '/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
-      } else if (lower.includes('vtlg') || lower.includes('relay_vtlg') || lower.includes('white_blank') || lower.includes('white-blank') || lower.includes('blank') || lower.includes('relay_1') || lower.includes('relay-1') || lower.includes('ee06') || lower.includes('horizontal') || (lower.includes('relay') && !lower.includes('wall') && !lower.includes('vertical'))) {
-        saveImageFile(file, '/relay_vtlg.png');
-        saveImageFile(file, '/white_blank.png');
-        saveImageFile(file, '/relay_1.png');
-        saveImageFile(file, '/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
-      } else if (lower.includes('2a1c') || lower.includes('1phase') || (lower.includes('servo') && !lower.includes('3phase') && !lower.includes('smart'))) {
-        saveImageFile(file, '/servo_blank_2.png');
-        saveImageFile(file, '/2a1c323c-b154-47a7-9d30-e69f1953bc88.png');
-      } else if (lower.includes('9ae0') || lower.includes('3phase') || lower.includes('smart') || lower.includes('cabinet') || lower.includes('wheel') || lower.includes('servo')) {
-        saveImageFile(file, '/servo_blank.png');
-        saveImageFile(file, '/servo_blank_1.png');
-        saveImageFile(file, '/9ae02810-d66d-4f0c-9480-f2716c93962d.png');
-      } else if (lower.includes('f7c4') || lower.includes('s7-1200') || (lower.includes('automation') && lower.includes('panel') && !lower.includes('wall'))) {
-        saveImageFile(file, '/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');
-      } else if (lower.includes('3e75') || (lower.includes('automation') && (lower.includes('wall') || lower.includes('tank')))) {
-        saveImageFile(file, '/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png');
-      } else if (lower.includes('4226') || lower.includes('feeder') || lower.includes('distribution') || lower.includes('pcc')) {
-        saveImageFile(file, '/4226810a-b806-4864-84b1-560112372c31.png');
-      } else {
-        saveImageFile(file, currentPhoto.url);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const handlePaste = (e: ClipboardEvent) => {
-      if (imageError && e.clipboardData?.files?.length) {
-        handleFiles(e.clipboardData.files);
-      }
-    };
-    window.addEventListener('paste', handlePaste);
-    return () => window.removeEventListener('paste', handlePaste);
-  }, [imageError, currentPhoto?.url]);
 
   const handleImageError = () => {
     if (imgSrc.includes(' (1)') || imgSrc.includes(' (2)')) {
@@ -375,43 +218,12 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         )}
 
         {/* Photographic Image Display - Full Cover */}
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept="image/*"
-          multiple
-          className="hidden"
-          onChange={(e) => handleFiles(e.target.files)}
-        />
         <div 
           onClick={() => interactive && size !== 'card' && setIsZoomOpen(true)}
-          onDragOver={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setIsDragging(true);
-          }}
-          onDragLeave={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setIsDragging(false);
-          }}
-          onDrop={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setIsDragging(false);
-            handleFiles(e.dataTransfer.files);
-          }}
           className={`w-full h-full overflow-hidden relative ${
             interactive && size !== 'card' ? 'cursor-zoom-in' : ''
           }`}
         >
-          {isDragging && (
-            <div className="absolute inset-0 bg-[#FF6B00]/20 border-2 border-dashed border-[#FF6B00] rounded-xl flex items-center justify-center z-30 pointer-events-none backdrop-blur-xs">
-              <span className="px-4 py-2 bg-[#FF6B00] text-white font-bold text-xs rounded-lg shadow-lg">
-                Drop Photo to Upload / Update
-              </span>
-            </div>
-          )}
           <AnimatePresence mode="wait">
             <motion.div
               key={`${product.id}-${mountingType}-${activePhotoIndex}`}
@@ -431,47 +243,23 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                 />
               ) : (
                 <div 
-                  onDragOver={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setIsDragging(true);
-                  }}
-                  onDragLeave={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setIsDragging(false);
-                  }}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setIsDragging(false);
-                    handleFiles(e.dataTransfer.files);
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    fileInputRef.current?.click();
-                  }}
-                  className={`w-full h-full flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-all ${
-                    isDragging 
-                      ? 'bg-orange-50/90 border-2 border-dashed border-[#FF6B00]' 
-                      : 'bg-gradient-to-b from-slate-50 to-slate-100 hover:bg-slate-200/50 border border-slate-200'
-                  }`}
+                  className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-slate-50 to-slate-100 border border-slate-200"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-orange-100/90 text-[#FF6B00] flex items-center justify-center mb-2 shadow-xs group-hover:scale-105 transition-transform">
-                    {isUploading ? (
-                      <div className="w-6 h-6 border-2 border-[#FF6B00] border-t-transparent rounded-full animate-spin" />
-                    ) : (
-                      <UploadCloud className="w-6 h-6" />
-                    )}
+                  <div className="w-12 h-12 rounded-2xl bg-[#0B2559]/5 text-[#0B2559] flex items-center justify-center mb-2 shadow-xs">
+                    <Camera className="w-6 h-6 text-[#FF6B00]" />
                   </div>
-                  <p className="text-xs font-bold text-slate-800 mb-0.5">{currentPhoto.title}</p>
-                  <p className="text-[11px] text-slate-500 mb-2">
-                    Click to load <span className="font-mono text-[#00205B] font-semibold">{currentPhoto.url.replace(/^\//, '')}</span> or drag & drop here
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#FF6B00] hover:bg-[#E55A00] text-white text-[11px] font-semibold shadow-xs transition-colors">
-                    <ImagePlus className="w-3.5 h-3.5" />
-                    Select Photo File
-                  </span>
+                  <p className="text-xs font-bold text-[#0B2559] mb-1">{currentPhoto.title}</p>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setImageError(false);
+                      setImgSrc(currentPhoto.url);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#0B2559] hover:bg-[#081B42] text-white text-[11px] font-semibold transition-colors cursor-pointer"
+                  >
+                    <span>Reload Photo</span>
+                  </button>
                 </div>
               )}
 

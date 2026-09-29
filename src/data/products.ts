@@ -450,16 +450,16 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFlange: [
       {
-        url: "/servo_blank.png",
-        title: "Surge Shore Industrial Servo Voltage Stabilizer - 3-Phase",
+        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        title: "Surge Shore 3-Phase Smart Industrial Servo Voltage Stabilizer",
         angleLabel: "3-Phase Unit",
-        description: "Surge Shore Industrial Servo-Type automatic voltage regulator - Three-Phase heavy-duty cabinet."
+        description: "Surge Shore 3-Phase continuous stepless servo voltage stabilizer in heavy-duty cabinet with digital controller, rotary main switch, MCB protection, and caster wheels."
       },
       {
-        url: "/servo_blank_2.png",
-        title: "Surge Shore Industrial Servo Voltage Stabilizer - 1-Phase",
+        url: "/servo_2.png",
+        title: "Surge Shore 1-Phase Digital Servo Voltage Stabilizer",
         angleLabel: "1-Phase Unit",
-        description: "Surge Shore Industrial Servo-Type automatic voltage regulator - Single-Phase console."
+        description: "Surge Shore Single-Phase precision digital servo voltage stabilizer console with LED digital power controller, Siemens circuit breaker, and Salzer rotary bypass switch."
       }
     ],
     galleryDefault: [
@@ -470,10 +470,16 @@ export const PRODUCTS_DATA: ProductItem[] = [
         description: "Surge Shore Relay-Type automatic voltage regulator in heavy-duty cabinet."
       },
       {
-        url: "/servo_blank.png",
-        title: "Surge Shore Servo Type Voltage Stabilizer",
-        angleLabel: "Servo Stabilizer",
-        description: "Surge Shore Industrial Servo-Type automatic voltage regulator."
+        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        title: "Surge Shore 3-Phase Smart Industrial Servo Voltage Stabilizer",
+        angleLabel: "3-Phase Servo",
+        description: "Surge Shore 3-Phase continuous stepless servo voltage stabilizer cabinet with digital controller and caster wheels."
+      },
+      {
+        url: "/servo_2.png",
+        title: "Surge Shore 1-Phase Digital Servo Voltage Stabilizer",
+        angleLabel: "1-Phase Servo",
+        description: "Surge Shore Single-Phase precision digital servo voltage stabilizer console with LED digital controller and Salzer switch."
       }
     ]
   },
@@ -507,19 +513,19 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryDefault: [
       {
-        url: "/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png",
+        url: "/ep_1.png",
         title: "Surge Shore Industrial Automation Panel (Siemens PLC & HMI)",
         angleLabel: "Dual-Door Floor Cabinet",
         description: "Floor-standing industrial control cabinet with Siemens SIMATIC S7-1200 PLC, Simatic HMI touchscreen, emergency stop, MCB array, Siemens contactors, and terminal blocks."
       },
       {
-        url: "/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png",
+        url: "/ep_2.png",
         title: "Surge Shore Wall-Mount Automation Control Panel",
         angleLabel: "Compact Wall-Mount HMI",
         description: "Wall-mount automation enclosure featuring Siemens HMI process monitoring display, control pushbuttons, internal PLC, SMPS, and circuit protection."
       },
       {
-        url: "/4226810a-b806-4864-84b1-560112372c31.png",
+        url: "/ep_3.png",
         title: "Surge Shore Multi-Feeder Power Distribution Panel (PCC / MCC)",
         angleLabel: "Power Distribution (12-Feeder)",
         description: "Heavy-duty power distribution panel equipped with Main Incomer ACB/MCCB, Danger 415V protection, analog & digital metering, and 12 individual outgoing feeder modules."

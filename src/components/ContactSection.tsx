@@ -11,8 +11,12 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/products';
+import { useIsMobile } from '../utils/animations';
 
 export const ContactSection: React.FC = () => {
+  const isMobile = useIsMobile();
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 8 : 16;
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -36,10 +40,10 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-12">
         {/* Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto space-y-2.5 sm:space-y-3"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0B2559]/10 text-[#0B2559] text-[11px] sm:text-xs font-bold font-mono uppercase tracking-wider">
@@ -57,15 +61,15 @@ export const ContactSection: React.FC = () => {
         {/* 2-Column Grid: Contact Cards & Clean Inquiry Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left Column: Direct Contact Info & Factory Map */}
-          <motion.div 
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-5 space-y-3.5 sm:space-y-4"
-          >
+          <div className="lg:col-span-5 space-y-3.5 sm:space-y-4">
             {/* Call Direct */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-colors">
+            <motion.div 
+              initial={{ opacity: 0, y: isMobile ? 6 : 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+              transition={{ duration: dur, delay: isMobile ? 0.02 : 0.04, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-all duration-200"
+            >
               <div className="w-10 h-10 rounded-xl bg-[#0B2559]/10 text-[#0B2559] flex items-center justify-center shrink-0">
                 <Phone className="w-5 h-5 text-[#FF6B00]" />
               </div>
@@ -83,10 +87,16 @@ export const ContactSection: React.FC = () => {
                   Direct Factory Call / Technical Support
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* WhatsApp Quick Chat */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-emerald-400 transition-colors">
+            <motion.div 
+              initial={{ opacity: 0, y: isMobile ? 6 : 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+              transition={{ duration: dur, delay: isMobile ? 0.04 : 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-emerald-400 transition-all duration-200"
+            >
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
                 <MessageSquare className="w-5 h-5" />
               </div>
@@ -106,10 +116,16 @@ export const ContactSection: React.FC = () => {
                   Instant catalog sharing & quick price estimates
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Email */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-colors">
+            <motion.div 
+              initial={{ opacity: 0, y: isMobile ? 6 : 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+              transition={{ duration: dur, delay: isMobile ? 0.06 : 0.12, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-all duration-200"
+            >
               <div className="w-10 h-10 rounded-xl bg-[#0B2559]/10 text-[#0B2559] flex items-center justify-center shrink-0">
                 <Mail className="w-5 h-5 text-[#FF6B00]" />
               </div>
@@ -124,10 +140,16 @@ export const ContactSection: React.FC = () => {
                   {COMPANY_INFO.email}
                 </a>
               </div>
-            </div>
+            </motion.div>
 
             {/* Factory Address */}
-            <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-colors">
+            <motion.div 
+              initial={{ opacity: 0, y: isMobile ? 6 : 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+              transition={{ duration: dur, delay: isMobile ? 0.08 : 0.16, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3.5 sm:gap-4 hover:border-[#FF6B00]/40 transition-all duration-200"
+            >
               <div className="w-10 h-10 rounded-xl bg-[#0B2559]/10 text-[#0B2559] flex items-center justify-center shrink-0 mt-0.5">
                 <MapPin className="w-5 h-5 text-[#FF6B00]" />
               </div>
@@ -152,15 +174,15 @@ export const ContactSection: React.FC = () => {
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
           {/* Right Column: Clean Simple Direct Inquiry Form */}
           <motion.div 
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: yShift }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+            transition={{ duration: dur, delay: isMobile ? 0.04 : 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 bg-white p-5 sm:p-8 rounded-3xl border border-slate-200 card-shadow"
           >
             <div className="border-b border-slate-100 pb-4 mb-5 sm:mb-6">

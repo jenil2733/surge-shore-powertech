@@ -12,6 +12,7 @@ import { ProductItem } from '../types';
 import { ProductPhotoview } from './ProductPhotoview';
 import { ProductDetailModal } from './ProductDetailModal';
 import { downloadCatalogDirectly } from '../utils/catalogPdfData';
+import { useIsMobile } from '../utils/animations';
 
 interface ProductCatalogProps {
   onOpenContact: () => void;
@@ -22,7 +23,11 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
   onOpenContact,
   onSelectProduct,
 }) => {
+  const isMobile = useIsMobile();
   const [selectedProductForModal, setSelectedProductForModal] = useState<ProductItem | null>(null);
+
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 8 : 16;
 
   const handleProductClick = (product: ProductItem) => {
     if (onSelectProduct) {
@@ -43,10 +48,10 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
             1. SECTION HEADER
            ========================================================= */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6"
         >
           <div className="space-y-2.5 sm:space-y-3 max-w-3xl">
@@ -89,24 +94,18 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({
         </motion.div>
 
         {/* =========================================================
-            2. PRODUCT CARDS GRID (Animated on load & scroll)
+            2. PRODUCT CARDS GRID (Simple clean animation as in other sections)
            ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
-          {PRODUCTS_DATA.map((product, index) => {
-            const staggerDelay = (index % 3) * 0.08 + Math.floor(index / 3) * 0.04;
-
+          {PRODUCTS_DATA.map((product) => {
             return (
               <motion.div
                 key={product.id}
-                initial={{ opacity: 0, y: 30, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: staggerDelay,
-                  ease: [0.21, 0.47, 0.32, 0.98] 
-                }}
-                className="group relative bg-white rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-2xl hover:border-[#0B2559]/30 transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1.5"
+                initial={{ opacity: 0, y: yShift }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+                transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Photographic Chamber */}
                 <div className="p-3 sm:p-5 pb-1 sm:pb-2 relative">

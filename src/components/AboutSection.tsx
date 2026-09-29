@@ -30,6 +30,7 @@ import {
   Gauge
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/products';
+import { useIsMobile } from '../utils/animations';
 
 interface AboutSectionProps {
   onOpenContact: () => void;
@@ -50,14 +51,14 @@ const AnimatedCounter: React.FC<CounterProps> = ({
   target,
   suffix = '+',
   prefix = '',
-  duration = 2000,
+  duration = 900,
   label,
   sublabel,
   icon
 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const isInView = useInView(ref, { once: true, margin: "-20px" });
 
   useEffect(() => {
     if (!isInView) return;
@@ -91,11 +92,11 @@ const AnimatedCounter: React.FC<CounterProps> = ({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="relative p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+      viewport={{ once: true, margin: "-15px" }}
+      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+      className="relative p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-200 group overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-bl from-[#FF6B00]/10 via-[#0B2559]/5 to-transparent rounded-bl-full pointer-events-none group-hover:scale-125 transition-transform duration-500" />
       
@@ -122,6 +123,11 @@ const AnimatedCounter: React.FC<CounterProps> = ({
 };
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => {
+  const isMobile = useIsMobile();
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 8 : 16;
+  const counterDur = isMobile ? 700 : 900;
+
   // Industries list directly from PDF Brochure page 3
   const brochureIndustries = [
     { name: 'Manufacturing', icon: <Factory className="w-5 h-5" />, desc: 'CNCs, Lathes, Machine Tools & Automation' },
@@ -169,10 +175,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             1. SECTION HEADER (Corporate Presentation)
            ========================================================= */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto space-y-2.5 sm:space-y-3"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-[#0B2559]/10 text-[#0B2559] text-[11px] sm:text-xs font-bold font-mono uppercase tracking-wider">
@@ -197,6 +203,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             target={6}
             suffix="+"
             sublabel="SINCE 2020"
+            duration={counterDur}
             label="Years of Industry Experience"
             icon={<Clock className="w-5 h-5 text-[#FF6B00]" />}
           />
@@ -204,6 +211,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             target={20}
             suffix="+"
             sublabel="TECHNICAL TEAM"
+            duration={counterDur}
             label="Employees & Engineers"
             icon={<Users className="w-5 h-5 text-[#FF6B00]" />}
           />
@@ -211,6 +219,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             target={125}
             suffix="+"
             sublabel="CLIENTS"
+            duration={counterDur}
             label="Satisfied Industrial Clients"
             icon={<Award className="w-5 h-5 text-[#FF6B00]" />}
           />
@@ -218,6 +227,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             target={100}
             suffix="%"
             sublabel="IS 325 / 996"
+            duration={counterDur}
             label="Routine Factory Tested"
             icon={<ShieldCheck className="w-5 h-5 text-[#FF6B00]" />}
           />
@@ -227,10 +237,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             3. CORE PHILOSOPHY BANNER
            ========================================================= */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
           className="relative p-6 sm:p-10 rounded-3xl bg-gradient-to-r from-[#0B2559] via-[#0E347A] to-[#0B2559] text-white shadow-xl border border-blue-900/50 overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-8"
         >
           <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-[#FF6B00]/10 rounded-full blur-3xl pointer-events-none" />
@@ -265,10 +275,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           {/* Main Story Narrative */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: yShift }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+            transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-5 sm:space-y-6 flex flex-col justify-between"
           >
             <div className="space-y-3 sm:space-y-4">
@@ -290,8 +300,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             {/* 4 Pillars Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-2">
               {engineeringPillars.map((pillar, idx) => (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: isMobile ? 6 : 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: dur, delay: isMobile ? 0.02 * idx : 0.06 * idx, ease: [0.16, 1, 0.3, 1] }}
                   className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/90 hover:border-[#0B2559]/30 hover:bg-slate-100/70 transition-all flex items-start gap-3"
                 >
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center justify-center shrink-0 mt-0.5">
@@ -301,17 +315,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
                     <h5 className="text-xs font-bold text-[#0B2559]">{pillar.title}</h5>
                     <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{pillar.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
           {/* Digital Visiting Card & Headquarters Visual */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: yShift }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+            transition={{ duration: dur, delay: isMobile ? 0.04 : 0.08, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex flex-col justify-between"
           >
             <div className="w-full h-full bg-gradient-to-br from-[#0B2559] via-[#0F3277] to-[#081A3E] text-white rounded-3xl p-5 sm:p-8 shadow-xl border border-[#214ea3] relative overflow-hidden flex flex-col justify-between space-y-5 sm:space-y-6">
@@ -396,10 +410,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           {/* Vision Card */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: yShift }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+            transition={{ duration: dur, delay: isMobile ? 0.02 : 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between group"
           >
             <div className="space-y-4">
@@ -436,10 +450,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
 
           {/* Mission Card */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: yShift }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+            transition={{ duration: dur, delay: isMobile ? 0.04 : 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 flex flex-col justify-between group"
           >
             <div className="space-y-4">
@@ -507,11 +521,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
             {brochureIndustries.map((ind, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: isMobile ? 6 : 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FF6B00] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between space-y-4"
+                viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+                transition={{ duration: dur, delay: isMobile ? 0.02 * (idx % 2) : 0.04 * (idx % 4), ease: [0.16, 1, 0.3, 1] }}
+                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#FF6B00] hover:shadow-md transition-all duration-200 group flex flex-col justify-between space-y-4"
               >
                 <div className="flex items-center justify-between">
                   <div className="w-11 h-11 rounded-xl bg-[#0B2559]/5 text-[#0B2559] group-hover:bg-[#0B2559] group-hover:text-[#FF6B00] flex items-center justify-center transition-all duration-300 shadow-xs">

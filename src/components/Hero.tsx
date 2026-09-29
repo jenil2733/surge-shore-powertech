@@ -10,6 +10,7 @@ import {
 import { COMPANY_INFO, PRODUCTS_DATA } from '../data/products';
 import { ProductItem } from '../types';
 import { Motor3DCanvas } from './Motor3DCanvas';
+import { useIsMobile } from '../utils/animations';
 
 interface HeroProps {
   onExploreCatalog: () => void;
@@ -22,12 +23,16 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenContact,
   onSelectProduct,
 }) => {
+  const isMobile = useIsMobile();
   const keyBadges = [
     { label: '100% Pure Copper Winding', desc: 'Electrolytic Class F (155°C)' },
     { label: 'Heavy Cast Iron & Aluminium', desc: 'Minimal Vibration & Fast Cooling' },
     { label: 'Continuous Duty S1 Rated', desc: 'Engineered for 24/7 Factory Shifts' },
     { label: 'Rajkot Gujarat Hub', desc: 'Direct Manufacturer Pricing & Supply' },
   ];
+
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 6 : 14;
 
   return (
     <section
@@ -39,16 +44,16 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative">
           {/* Left Column: Corporate Heading, Value Proposition & Action Buttons */}
           <motion.div 
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: yShift }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 space-y-4 sm:space-y-5 text-left relative z-20 pointer-events-auto w-full"
           >
             {/* Verification pill */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.04, duration: dur }}
               className="inline-flex max-w-full items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-full bg-[#00205B]/5 border border-[#00205B]/15 text-[#00205B] text-[10.5px] sm:text-xs font-bold font-mono uppercase tracking-wider shadow-xs min-w-0"
             >
               <Building2 className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
@@ -57,9 +62,9 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Main Headline */}
             <motion.h1 
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: yShift }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.06, duration: dur }}
               className="text-2xl sm:text-3xl xl:text-[2.6rem] font-black text-[#0B2559] tracking-tight leading-[1.2] font-display"
             >
               INDUSTRIAL MOTORS, VIBRATOR MOTORS, <br className="hidden sm:inline" />
@@ -68,9 +73,9 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Descriptive Body */}
             <motion.p 
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: yShift }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
+              transition={{ delay: 0.1, duration: dur }}
               className="text-slate-600 text-xs sm:text-sm sm:leading-relaxed max-w-xl font-normal"
             >
               Direct manufacturer of high-efficiency <strong>1-Phase & 3-Phase Induction Motors</strong>, heavy-duty <strong>Vibrator Motors</strong>, 
@@ -78,15 +83,13 @@ export const Hero: React.FC<HeroProps> = ({
             </motion.p>
 
             {/* Key Quality Pillars Grid */}
-            <motion.div 
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1">
               {keyBadges.map((badge, idx) => (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: isMobile ? 4 : 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.12 + idx * (isMobile ? 0.03 : 0.05), duration: dur, ease: [0.16, 1, 0.3, 1] }}
                   className="flex items-start gap-2 p-2.5 rounded-xl bg-white border border-slate-200 shadow-xs hover:border-[#FF6B00]/40 transition-colors"
                 >
                   <CheckCircle2 className="w-4 h-4 text-[#FF6B00] shrink-0 mt-0.5" />
@@ -94,15 +97,15 @@ export const Hero: React.FC<HeroProps> = ({
                     <div className="text-xs font-bold text-[#0B2559] truncate">{badge.label}</div>
                     <div className="text-[10.5px] text-slate-500 line-clamp-1">{badge.desc}</div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </motion.div>
+            </div>
 
             {/* Direct Action Buttons */}
             <motion.div 
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: yShift }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.16, duration: dur }}
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2 w-full"
             >
               {/* Primary CTA: Products & Catalog */}
@@ -127,9 +130,9 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Right Column: Interactive 3D 360° Real-Time Motor Studio */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: isMobile ? 0.3 : 0.45, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 flex flex-col items-center relative z-10 overflow-visible w-full"
           >
             <div className="w-full overflow-visible">

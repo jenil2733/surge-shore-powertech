@@ -31,6 +31,7 @@ import { ProductItem, ProductCategory } from '../types';
 import { PRODUCTS_DATA, COMPANY_INFO } from '../data/products';
 import { ProductPhotoview } from './ProductPhotoview';
 import { SurgeShoreLogo } from './SurgeShoreLogo';
+import { useIsMobile } from '../utils/animations';
 
 interface ProductDetailPageProps {
   product: ProductItem;
@@ -45,6 +46,9 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   onSelectProduct,
   onOpenContact,
 }) => {
+  const isMobile = useIsMobile();
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 8 : 16;
   const [selectedPhase, setSelectedPhase] = useState<'3-Phase' | '1-Phase'>('3-Phase');
   const [selectedMounting, setSelectedMounting] = useState<'foot-mounted' | 'flange-mounted'>('foot-mounted');
   const [activeTab, setActiveTab] = useState<'specs' | 'features' | 'applications' | 'testing'>('specs');
@@ -134,7 +138,12 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         {/* Main 2-Column Product Showcase Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left Column: Interactive Photorised Studio */}
-          <div className="lg:col-span-6 space-y-4">
+          <motion.div 
+            initial={{ opacity: 0, y: yShift }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-4"
+          >
             <div className="bg-white p-3.5 sm:p-6 rounded-3xl border border-slate-200 card-shadow space-y-4">
               {/* Product Visual Header Badge */}
               <div className="flex items-center justify-between">
@@ -206,10 +215,15 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                 <span className="text-[11px] sm:text-xs">100% In-House Tested for High-Pot Dielectric, Load Regulation & Calibration at Rajkot Plant.</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Engineering Details, Quick Specs & Direct Inquiries */}
-          <div className="lg:col-span-6 space-y-5 sm:space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: yShift }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: dur, delay: isMobile ? 0.02 : 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-5 sm:space-y-6"
+          >
             {/* Title & Subtitle */}
             <div className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-200 card-shadow space-y-4">
               <div>
@@ -351,7 +365,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
               </div>
             </div>
 
-          </div>
+          </motion.div>
         </div>
 
         {/* Detailed Tabs: Technical Specs, Features, Applications, Testing */}

@@ -12,8 +12,10 @@ import { MessageSquare, PhoneCall } from 'lucide-react';
 import { WhatsAppIcon } from './components/WhatsAppIcon';
 import { COMPANY_INFO, PRODUCTS_DATA } from './data/products';
 import { ProductItem } from './types';
+import { useIsMobile } from './utils/animations';
 
 export default function App() {
+  const isMobile = useIsMobile();
   const [activeSection, setActiveSection] = useState('hero');
   const [currentView, setCurrentView] = useState<'home' | 'product-detail'>('home');
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
@@ -115,23 +117,15 @@ export default function App() {
         {currentView === 'product-detail' && selectedProduct ? (
           <motion.div
             key={`product-${selectedProduct.id}`}
-            initial={{ opacity: 0, scale: 0.94, y: 28 }}
+            initial={{ opacity: 0, y: isMobile ? 8 : 16 }}
             animate={{ 
               opacity: 1, 
-              scale: 1, 
               y: 0,
-              transition: {
-                type: "spring",
-                stiffness: 300,
-                damping: 28,
-                mass: 0.8
-              }
+              transition: { duration: isMobile ? 0.2 : 0.26, ease: "easeOut" }
             }}
             exit={{ 
               opacity: 0, 
-              scale: 0.96, 
-              y: 16,
-              transition: { duration: 0.2, ease: "easeOut" }
+              transition: { duration: 0.15, ease: "easeOut" }
             }}
             className="w-full origin-top"
           >
@@ -145,16 +139,14 @@ export default function App() {
         ) : (
           <motion.main
             key="home-main"
-            initial={{ opacity: 0, scale: 0.98 }}
+            initial={{ opacity: 0 }}
             animate={{ 
               opacity: 1, 
-              scale: 1,
-              transition: { duration: 0.28, ease: "easeOut" }
+              transition: { duration: isMobile ? 0.2 : 0.26, ease: "easeOut" }
             }}
             exit={{ 
               opacity: 0, 
-              scale: 0.98,
-              transition: { duration: 0.2, ease: "easeOut" }
+              transition: { duration: 0.15, ease: "easeOut" }
             }}
             className="relative"
           >

@@ -10,11 +10,15 @@ import {
   Shield, 
   Award, 
   Check, 
-  Cpu,
+  Cpu, 
   Layers
 } from 'lucide-react';
+import { useIsMobile } from '../utils/animations';
 
 export const QualityStandards: React.FC = () => {
+  const isMobile = useIsMobile();
+  const dur = isMobile ? 0.22 : 0.32;
+  const yShift = isMobile ? 8 : 16;
   // 4 Industrial Testing Stages
   const testingStages = [
     {
@@ -138,10 +142,10 @@ export const QualityStandards: React.FC = () => {
             1. SECTION HEADER
            ========================================================= */}
         <motion.div 
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto space-y-3"
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0B2559]/10 text-[#0B2559] text-[11px] sm:text-xs font-bold font-mono uppercase tracking-wider">
@@ -180,10 +184,10 @@ export const QualityStandards: React.FC = () => {
             {testingStages.map((stage, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: yShift }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+                transition={{ duration: dur, delay: isMobile ? 0.02 * (idx % 2) : 0.06 * idx, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#FF6B00]/60 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
               >
                 {/* Accent Watermark / Ambient Corner */}
@@ -281,9 +285,13 @@ export const QualityStandards: React.FC = () => {
           {/* 4 Standards Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {complianceStandards.map((std, idx) => (
-              <div
+              <motion.div
                 key={idx}
-                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-5 flex flex-col justify-between"
+                initial={{ opacity: 0, y: yShift }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+                transition={{ duration: dur, delay: isMobile ? 0.02 * (idx % 2) : 0.05 * idx, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200 space-y-5 flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   {/* Top Bar: Icon Box and Badge */}
@@ -324,7 +332,7 @@ export const QualityStandards: React.FC = () => {
                   <span>Certified Norm</span>
                   <span className="text-emerald-600">Passed ✓</span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -333,10 +341,10 @@ export const QualityStandards: React.FC = () => {
             4. MANUFACTURER QA COMMITMENT BANNER
            ========================================================= */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: yShift }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true, margin: isMobile ? "-15px" : "-30px" }}
+          transition={{ duration: dur, delay: isMobile ? 0.03 : 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="bg-gradient-to-r from-[#0B2559] via-[#0E347A] to-[#0B2559] text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-900/50 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-start sm:items-center gap-4">
