@@ -403,6 +403,14 @@ export const PRODUCTS_DATA: ProductItem[] = [
           "Residential Mainline Incomers & Home Electrical Networks",
           "Commercial Photocopiers, Treadmills & Lab Equipment",
           "Single-Phase Agricultural Monoblock Pump Feeders"
+        ],
+        gallery: [
+          {
+            url: "/relay_vtlg.png",
+            title: "Surge Shore Industrial Relay Type Voltage Stabilizer Console",
+            angleLabel: "Relay Console",
+            description: "Surge Shore Relay-Type automatic voltage regulator in heavy-duty cabinet featuring Siemens MCB breaker, micro controller circuit, digital LED voltage display, and intelligent time delay relay."
+          }
         ]
       },
       {
@@ -437,6 +445,20 @@ export const PRODUCTS_DATA: ProductItem[] = [
           "Textile Spinning, Weaving & Auto-Loom Complexes",
           "Printing, Packaging & Automated Food Processing Lines",
           "Total Factory & Industrial Facility Central Power Conditioning"
+        ],
+        gallery: [
+          {
+            url: "/servo_1.png",
+            title: "Surge Shore 3-Phase Smart Industrial Servo Voltage Stabilizer",
+            angleLabel: "3-Phase Servo",
+            description: "Surge Shore 3-Phase continuous stepless servo voltage stabilizer in heavy-duty cabinet with digital controller, rotary main switch, MCB protection, and caster wheels."
+          },
+          {
+            url: "/servo_2.png",
+            title: "Surge Shore 1-Phase Digital Servo Voltage Stabilizer",
+            angleLabel: "1-Phase Servo",
+            description: "Surge Shore Single-Phase precision digital servo voltage stabilizer console with LED digital power controller, Siemens circuit breaker, and Salzer rotary bypass switch."
+          }
         ]
       }
     ],
@@ -450,7 +472,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
     ],
     galleryFlange: [
       {
-        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        url: "/servo_1.png",
         title: "Surge Shore 3-Phase Smart Industrial Servo Voltage Stabilizer",
         angleLabel: "3-Phase Unit",
         description: "Surge Shore 3-Phase continuous stepless servo voltage stabilizer in heavy-duty cabinet with digital controller, rotary main switch, MCB protection, and caster wheels."
@@ -470,7 +492,7 @@ export const PRODUCTS_DATA: ProductItem[] = [
         description: "Surge Shore Relay-Type automatic voltage regulator in heavy-duty cabinet."
       },
       {
-        url: "/9ae02810-d66d-4f0c-9480-f2716c93962d.png",
+        url: "/servo_1.png",
         title: "Surge Shore 3-Phase Smart Industrial Servo Voltage Stabilizer",
         angleLabel: "3-Phase Servo",
         description: "Surge Shore 3-Phase continuous stepless servo voltage stabilizer cabinet with digital controller and caster wheels."
@@ -510,6 +532,113 @@ export const PRODUCTS_DATA: ProductItem[] = [
       "Plastic Injection & Extrusion Plants",
       "Cold Storage & Industrial HVAC Plants",
       "Pharma & Chemical Processing Lines"
+    ],
+    subCategories: [
+      {
+        id: "plc-floor-panel",
+        name: "PLC & HMI Automation Panel",
+        code: "Floor-Standing PLC & HMI",
+        subtitle: "Dual-door floor cabinet with Siemens S7-1200 PLC, HMI touch screen & motor contactors",
+        description: "Surge Shore Floor-Standing Industrial Automation Cabinets are engineered with authentic Siemens SIMATIC S7-1200 PLC controller, Simatic high-resolution touch HMI display, front emergency stop, full MCB circuit breaker arrays, contactors, and high-dielectric DIN rail terminal blocks. Built in heavy gauge CRCA sheet steel with IP54 dust and splash protection for automated machinery and plant-wide control.",
+        phase: "3-Phase",
+        phaseLabel: "3-Phase (415V AC)",
+        features: [
+          "Integrated Siemens SIMATIC S7-1200 PLC with expandable digital & analog I/O modules",
+          "High-resolution Siemens Simatic touch HMI operator panel for real-time visualization",
+          "Heavy-duty 14/16 gauge CRCA steel enclosure with RAL 7035 powder coating & dual door locks",
+          "Complete switchgear assembly: Siemens MCBs, thermal overload relays, and motor contactors",
+          "Neat ferruled wiring channels with high-grade flame-retardant terminal blocks",
+          "Emergency shut-off mushroom button and dual safety grounding busbars"
+        ],
+        dimensions: [
+          { frame: "Compact Floor (800x600x300 mm)", hp: "Up to 30 HP", mountingSpec: "Floor Mount Base Plinth", shaftDiameter: "IP54 Gasketed", standard: "IEC 61439 / IS 8623", phase: "3-Phase" },
+          { frame: "Standard Floor (1200x800x400 mm)", hp: "Up to 75 HP", mountingSpec: "Floor Mount Base Plinth", shaftDiameter: "IP54 Gasketed", standard: "IEC 61439 / IS 8623", phase: "3-Phase" },
+          { frame: "Heavy Industrial (1800x1000x500 mm)", hp: "Up to 200+ HP", mountingSpec: "Floor Mount Heavy Channel", shaftDiameter: "IP55 Gasketed", standard: "IEC 61439 / IS 8623", phase: "3-Phase" }
+        ],
+        applications: [
+          "Turnkey Process Machinery & Assembly Lines",
+          "Plastic Extrusion & Injection Moulding Automation",
+          "Pharmaceutical Batch Processing & Conveyors",
+          "Automated Chemical Dosing & Batch Mixers"
+        ],
+        gallery: [
+          {
+            url: "/ep_1.png",
+            title: "Surge Shore Industrial Automation Panel (Siemens PLC & HMI)",
+            angleLabel: "Dual-Door Floor Cabinet",
+            description: "Floor-standing industrial control cabinet with Siemens SIMATIC S7-1200 PLC, Simatic HMI touchscreen, emergency stop, MCB array, Siemens contactors, and terminal blocks."
+          }
+        ]
+      },
+      {
+        id: "wall-mount-panel",
+        name: "Wall-Mount Automation Panel",
+        code: "Compact Wall-Mount HMI",
+        subtitle: "Space-saving wall-mount automation console with Siemens touch HMI & operator pushbuttons",
+        description: "Surge Shore Compact Wall-Mount Control Panels are engineered for space-restricted industrial machines, test benches, and standalone automation cells. Features a vibrant Siemens HMI display for operator monitoring, industrial selector switches, pilot indicator lights, internal power supply, and compact terminal interfaces.",
+        phase: "3-Phase",
+        phaseLabel: "3-Phase (415V AC)",
+        features: [
+          "Space-saving wall-mount footprint with secure mounting lugs and rubber door gaskets",
+          "Front operator console with Siemens HMI touch display, illuminated pushbuttons, and E-Stop",
+          "Internal DIN-rail layout with 24V DC regulated SMPS power supply and circuit protection",
+          "Clean laser-cut gland plate for flexible multi-cable conduit entry",
+          "IP54 / IP55 ingress protection against dust, moisture, and cutting fluid mist"
+        ],
+        dimensions: [
+          { frame: "Wall Mount S (500x400x200 mm)", hp: "Up to 15 HP", mountingSpec: "Wall Mount Lugs", shaftDiameter: "IP54 Gasketed", standard: "IEC 61439 / IS 8623", phase: "3-Phase" },
+          { frame: "Wall Mount M (700x500x250 mm)", hp: "Up to 30 HP", mountingSpec: "Wall Mount Lugs", shaftDiameter: "IP54 Gasketed", standard: "IEC 61439 / IS 8623", phase: "3-Phase" }
+        ],
+        applications: [
+          "CNC Lathe & Milling Automation Skids",
+          "Water Pump Booster & Filtration Stations",
+          "Standalone Packaging & Labeling Machines",
+          "Industrial Heating & Furnace Temperature Loops"
+        ],
+        gallery: [
+          {
+            url: "/ep_2.png",
+            title: "Surge Shore Wall-Mount Automation Control Panel",
+            angleLabel: "Compact Wall-Mount HMI",
+            description: "Wall-mount automation enclosure featuring Siemens HMI process monitoring display, control pushbuttons, internal PLC, SMPS, and circuit protection."
+          }
+        ]
+      },
+      {
+        id: "pcc-mcc-panel",
+        name: "Power Distribution (PCC / MCC) Panel",
+        code: "Multi-Feeder Distribution",
+        subtitle: "Heavy-duty 415V central power distribution & motor control center with 12 outgoing feeders",
+        description: "Surge Shore Power Control Center (PCC) and Motor Control Center (MCC) panels deliver dependable centralized electrical distribution for factories and manufacturing plants. Equipped with high-breaking capacity incomer ACB/MCCB, multi-function digital energy meters, phase busbars, and 12 individual motor/load outgoing feeders.",
+        phase: "3-Phase",
+        phaseLabel: "3-Phase (415V AC)",
+        features: [
+          "Main Incomer with high breaking capacity ACB/MCCB and Danger 415V safety barriers",
+          "Multi-function digital power meter monitoring Volts, Amps, Power Factor, and Harmonic Distortion",
+          "12 individual outgoing feeder compartments with isolated circuit breakers and pilot lamps",
+          "High conductivity 99.9% electrolytic grade copper busbars with colour-coded heat-shrink insulation",
+          "Short circuit withstand tested structure with compartmentalized form separation",
+          "Louvred side panels with air filters for continuous cooling and thermal stability"
+        ],
+        dimensions: [
+          { frame: "MCC-8 Feeder (1800x1200x600 mm)", hp: "100 - 250 kVA", mountingSpec: "Base Channel Plinth", shaftDiameter: "IP54 Rated", standard: "IEC 61439 / IS 8623", phase: "3-Phase" },
+          { frame: "PCC-12 Feeder (2000x1600x800 mm)", hp: "250 - 500+ kVA", mountingSpec: "Heavy Base Channel", shaftDiameter: "IP54 Rated", standard: "IEC 61439 / IS 8623", phase: "3-Phase" }
+        ],
+        applications: [
+          "Factory Main Incomer & Substation Distribution",
+          "Central Motor Control Centers (MCC) for Plants",
+          "Commercial Building & Hospital Infrastructure Power",
+          "Textile & Plastic Manufacturing Central Boards"
+        ],
+        gallery: [
+          {
+            url: "/ep_3.png",
+            title: "Surge Shore Multi-Feeder Power Distribution Panel (PCC / MCC)",
+            angleLabel: "Power Distribution (12-Feeder)",
+            description: "Heavy-duty power distribution panel equipped with Main Incomer ACB/MCCB, Danger 415V protection, analog & digital metering, and 12 individual outgoing feeder modules."
+          }
+        ]
+      }
     ],
     galleryDefault: [
       {

@@ -309,12 +309,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {product.subCategories && product.subCategories.length > 0 && (
                   <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-xs space-y-1.5">
                     <div className="flex items-center justify-between text-[11px] font-bold text-slate-700">
-                      <span>{product.type === 'stabilizer' ? 'Stabilizer Type:' : 'Mounting Sub-Category:'}</span>
+                      <span>{product.type === 'stabilizer' ? 'Stabilizer Type:' : product.type === 'panel' ? 'Automation Panel Type:' : 'Mounting Sub-Category:'}</span>
                       <span className="font-mono text-[#FF6B00]">
                         {currentSubCategory ? currentSubCategory.name : 'Standard'}
                       </span>
                     </div>
-                    <div className={`grid ${product.subCategories.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2`}>
+                    <div className={`grid ${product.subCategories.length > 2 ? 'grid-cols-1 sm:grid-cols-3' : product.subCategories.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-2`}>
                       {product.subCategories.map((sub, idx) => {
                         const isSelected = selectedMounting === sub.id;
                         return (
@@ -332,7 +332,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                               <span className="truncate">{idx + 1}. {sub.name.split(' (')[0]}</span>
                             </div>
                             <span className={`text-[10px] font-semibold ${isSelected ? 'text-amber-300' : 'text-slate-500'}`}>
-                              {sub.phaseLabel || (sub.id === 'relay-type' ? '230V 1-Phase' : '230V & 415V Both')}
+                              {sub.phaseLabel || (sub.id === 'relay-type' ? '230V 1-Phase' : sub.id === 'servo-type' ? '230V & 415V Both' : '415V 3-Phase')}
                             </span>
                           </button>
                         );

@@ -36,6 +36,16 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
   const [imageError, setImageError] = useState(false);
   const [imgSrc, setImgSrc] = useState<string>('');
 
+  // Resolve current active subcategory
+  const currentSubCategory = React.useMemo(() => {
+    if (!product.subCategories || product.subCategories.length === 0) return null;
+    if (mountingType) {
+      const match = product.subCategories.find(s => s.id === mountingType);
+      if (match) return match;
+    }
+    return product.subCategories[0];
+  }, [product.subCategories, mountingType]);
+
   // Determine active photos based on mounting or subtype selection
   const isSecondSubCategory = React.useMemo(() => {
     if (!product.subCategories || product.subCategories.length < 2) return false;
@@ -44,6 +54,12 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
   }, [product.subCategories, mountingType]);
 
   const activeGallery: ProductPhoto[] = React.useMemo(() => {
+    // 1. If active subcategory defines its own specific gallery images, prioritize it
+    if (currentSubCategory?.gallery && currentSubCategory.gallery.length > 0) {
+      return currentSubCategory.gallery;
+    }
+
+    // 2. Motor subcategory dual-gallery fallback (foot B3 vs flange B5)
     if (product.subCategories && product.subCategories.length > 0) {
       if (isSecondSubCategory && product.galleryFlange && product.galleryFlange.length > 0) {
         return product.galleryFlange;
@@ -79,7 +95,7 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
         description: "High dielectric terminal block and enclosure housing."
       }
     ];
-  }, [product, isSecondSubCategory]);
+  }, [product, currentSubCategory, isSecondSubCategory]);
 
   // When mounting type or product changes, reset active photo to index 0
   useEffect(() => {
@@ -91,61 +107,8 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
 
   useEffect(() => {
     if (currentPhoto?.url) {
-      // Clear stale duplicate cache if stored for flng_3 or foot_alu
-      if (currentPhoto.url.includes('flng_3')) {
-        try {
-          localStorage.removeItem('ss_photo_/flng_3.png');
-          localStorage.removeItem('ss_photo_/flng_3.png'.toLowerCase());
-        } catch {
-          // ignore
-        }
-      }
-      if (currentPhoto.url.includes('foot_alu') || currentPhoto.url.includes('regenerated_image_1790584799192')) {
-        try {
-          localStorage.removeItem('ss_photo_/foot_alu.png');
-          localStorage.removeItem('ss_photo_/foot_alu.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/regenerated_image_1790584799192.png');
-          localStorage.removeItem('ss_photo_/regenerated_image_1790584799192.png'.toLowerCase());
-        } catch {
-          // ignore
-        }
-      }
-      if (currentPhoto.url.includes('relay_vtlg') || currentPhoto.url.includes('white_blank') || currentPhoto.url.includes('relay_1') || currentPhoto.url.includes('ee06c767')) {
-        try {
-          localStorage.removeItem('ss_photo_/relay_vtlg.png');
-          localStorage.removeItem('ss_photo_/relay_vtlg.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/white_blank.png');
-          localStorage.removeItem('ss_photo_/white_blank.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/relay_1.png');
-          localStorage.removeItem('ss_photo_/relay_1.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/ee06c767-4ce5-484f-aba4-71677d4dde8d.png');
-          localStorage.removeItem('ss_photo_/553cb61f-e729-483c-92ed-e3fa1ba3b685.png');
-        } catch {
-          // ignore
-        }
-      }
-      if (currentPhoto.url.includes('panel_blank') || currentPhoto.url.includes('f7c4') || currentPhoto.url.includes('3e75') || currentPhoto.url.includes('4226')) {
-        try {
-          localStorage.removeItem('ss_photo_/panel_blank.png');
-          localStorage.removeItem('ss_photo_/panel_blank.png'.toLowerCase());
-          localStorage.removeItem('ss_photo_/f7c4b342-52a5-421b-aa77-56a0a4aeca0a.png');
-          localStorage.removeItem('ss_photo_/3e75ecb7-6855-4c5e-aaec-e619bc54f722.png');
-          localStorage.removeItem('ss_photo_/4226810a-b806-4864-84b1-560112372c31.png');
-        } catch {
-          // ignore
-        }
-      }
-
-      const stored = 
-        localStorage.getItem('ss_photo_' + currentPhoto.url) ||
-        localStorage.getItem('ss_photo_' + currentPhoto.url.toLowerCase());
-      if (stored) {
-        setImgSrc(stored);
-        setImageError(false);
-      } else {
-        setImgSrc(currentPhoto.url);
-        setImageError(false);
-      }
+      setImgSrc(currentPhoto.url);
+      setImageError(false);
     }
   }, [currentPhoto?.url, activePhotoIndex]);
 
@@ -196,6 +159,9 @@ export const ProductPhotoview: React.FC<ProductPhotoviewProps> = ({
                   sub.id === 'flange-mounted' ? 'Flange (B5/B14)' :
                   sub.id === 'relay-type' ? 'Relay (1-PH Only)' :
                   sub.id === 'servo-type' ? 'Servo (1-PH & 3-PH)' :
+                  sub.id === 'plc-floor-panel' ? 'Floor PLC & HMI' :
+                  sub.id === 'wall-mount-panel' ? 'Wall-Mount HMI' :
+                  sub.id === 'pcc-mcc-panel' ? 'PCC/MCC 12-Way' :
                   sub.name;
 
                 return (

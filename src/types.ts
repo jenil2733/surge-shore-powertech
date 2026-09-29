@@ -20,6 +20,7 @@ export interface MountingSubCategory {
     phase?: '1-Phase' | '3-Phase' | 'Both';
   }[];
   applications: string[];
+  gallery?: ProductPhoto[];
 }
 
 export type ProductCategory = 

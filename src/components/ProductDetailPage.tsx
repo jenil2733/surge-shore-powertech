@@ -250,14 +250,14 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#0B2559] flex items-center gap-1.5">
                       <Sliders className="w-3.5 h-3.5 text-[#FF6B00]" />
-                      <span>{product.type === 'stabilizer' ? 'Available Stabilizer Types:' : 'Available Sub-Categories / Mounting:'}</span>
+                      <span>{product.type === 'stabilizer' ? 'Available Stabilizer Types:' : product.type === 'panel' ? 'Available Panel Configurations & Types:' : 'Available Sub-Categories / Mounting:'}</span>
                     </span>
                     <span className="text-[10px] font-bold text-slate-500 bg-white px-2 py-0.5 rounded border border-slate-200">
                       Select to preview
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className={`grid grid-cols-1 ${product.subCategories.length > 2 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-2.5`}>
                     {product.subCategories.map((sub, idx) => {
                       const isSelected = selectedMounting === sub.id;
                       return (
